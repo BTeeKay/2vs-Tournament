@@ -1,4 +1,4 @@
-import React from 'react;'
+import React from 'react';
 
 const PlayerContainer = () => {
 
@@ -7,6 +7,7 @@ const PlayerContainer = () => {
 
     return (
         <>
+        <h2> Kieran Rooney</h2>
         </>
     )
 
