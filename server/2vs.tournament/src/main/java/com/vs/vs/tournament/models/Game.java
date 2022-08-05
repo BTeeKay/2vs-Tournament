@@ -11,9 +11,11 @@ public class Game {
     private Long id;
     @Column(name = "name")
     private String name;
-    @Column(name = "player1")
+    @OneToOne
+    @JoinColumn(name = "player1_id", nullable = true)
     private Player player1;
-    @Column(name = "player2")
+    @OneToOne
+    @JoinColumn(name = "player2_id", nullable = true)
     private Player player2;
 
     public Game(String name) {

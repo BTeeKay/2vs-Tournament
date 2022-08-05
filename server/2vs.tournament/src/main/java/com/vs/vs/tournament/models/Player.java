@@ -13,9 +13,13 @@ public class Player {
 
     @Column(name="name")
     private String name;
+    @OneToOne
+    @JoinColumn(name = "game_id", nullable = true)
+    private Game game;
 
     public Player(String name) {
         this.name = name;
+        this.game = null;
     }
 
     public Player(){}
@@ -34,5 +38,13 @@ public class Player {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Game getGame() {
+        return game;
+    }
+
+    public void setGame(Game game) {
+        this.game = game;
     }
 }
