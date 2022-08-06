@@ -17,11 +17,15 @@ public class Game {
     @OneToOne
     @JoinColumn(name = "player2_id", nullable = true)
     private Player player2;
+    @OneToOne
+    @JoinColumn(name = "winner_id")
+    private Player winner;
 
     public Game(String name) {
         this.name = name;
         this.player1 = null;
         this.player2 = null;
+        this.winner = null;
     }
 
     public Game() {
@@ -58,5 +62,21 @@ public class Game {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public boolean canPlayMatch() {
+        if (this.player1 == null) return false;
+        if (this.player2 == null) return false;
+        return true;
+    }
+
+    public Player getWinner() {
+        return winner;
+    }
+
+    public void setWinner(Player winner) {
+        if (this.canPlayMatch()) {
+            this.winner = winner;
+        }
     }
 }
