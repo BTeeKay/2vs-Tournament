@@ -16,15 +16,15 @@ public class Round {
     private String name;
     @Column(name = "numOfGames")
     private int numOfGames;
-    @ManyToOne
+    @OneToMany
     @JoinColumn(name = "game_id")
     private List<Game> games;
-    @ManyToOne
-    @JoinColumn(name = "winner_id")
-    private List<Winner> winners;
-    @ManyToOne
-    @JoinColumn(name = "loser_id")
-    private List<Loser> losers;
+    @OneToMany
+    @JoinColumn(name = "player_id")
+    private List<Player> winners;
+    @OneToMany
+    @JoinColumn(name = "player_id")
+    private List<Player> losers;
     @Column(name = "finished")
     private boolean finished;
 
@@ -65,19 +65,19 @@ public class Round {
         this.games = games;
     }
 
-    public List<Winner> getWinners() {
+    public List<Player> getWinners() {
         return winners;
     }
 
-    public void setWinners(List<Winner> winners) {
+    public void setWinners(List<Player> winners) {
         this.winners = winners;
     }
 
-    public List<Loser> getLosers() {
+    public List<Player> getLosers() {
         return losers;
     }
 
-    public void setLosers(List<Loser> losers) {
+    public void setLosers(List<Player> losers) {
         this.losers = losers;
     }
 
