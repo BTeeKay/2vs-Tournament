@@ -21,15 +21,32 @@ public class Game {
     @JoinColumn(name = "winner_id")
     private Player winner;
 
+
+    @ManyToOne
+    @JoinColumn(name="round_id", nullable = true)
+    private Round round;
+
+
+
     public Game(String name) {
         this.name = name;
         this.player1 = null;
         this.player2 = null;
         this.winner = null;
+        this.round = null;
     }
 
     public Game() {
 
+    }
+
+
+    public Round getRound() {
+        return round;
+    }
+
+    public void setRound(Round round) {
+        this.round = round;
     }
 
     public String getName() {

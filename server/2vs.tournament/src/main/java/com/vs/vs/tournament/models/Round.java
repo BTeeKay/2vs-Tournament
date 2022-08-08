@@ -1,5 +1,6 @@
 package com.vs.vs.tournament.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
@@ -16,14 +17,15 @@ public class Round {
     private String name;
     @Column(name = "numOfGames")
     private int numOfGames;
-    @OneToMany
-    @JoinColumn(name = "game_id")
+    @JsonIgnoreProperties({"round"})
+    @OneToMany(mappedBy = "round", fetch=FetchType.LAZY)
     private List<Game> games;
+
     @OneToMany
-    @JoinColumn(name = "player_id")
+    @JoinColumn(name = "winner_player_id", nullable = true)
     private List<Player> winners;
     @OneToMany
-    @JoinColumn(name = "player_id")
+    @JoinColumn(name = "loser_player_id", nullable = true)
     private List<Player> losers;
     @Column(name = "finished")
     private boolean finished;
@@ -39,6 +41,14 @@ public class Round {
 
     public Round() {
 
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -82,7 +92,13 @@ public class Round {
     }
 
     public boolean isFinished() {
-        return finished;
+        for (Game game : getGames()){
+            if (game.getWinner() == null){
+                return finished;
+            }
+        }
+        this.finished = true;
+        return true;
     }
 
     public void setFinished(boolean finished) {
