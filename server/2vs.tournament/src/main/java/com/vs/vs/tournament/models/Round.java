@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -22,6 +23,7 @@ public class Round {
     private List<Game> games;
 
     @OneToMany
+    @JsonIgnoreProperties({"game"})
     @JoinColumn(name = "winner_player_id", nullable = true)
     private List<Player> winners;
     @OneToMany
@@ -33,9 +35,9 @@ public class Round {
     public Round(String name, int numOfGames) {
         this.name = name;
         this.numOfGames = numOfGames;
-        this.games = null;
-        this.winners = null;
-        this.losers = null;
+        this.games = new ArrayList<>();
+        this.winners = new ArrayList<>();
+        this.losers = new ArrayList<>();
         this.finished = false;
     }
 
@@ -92,16 +94,21 @@ public class Round {
     }
 
     public boolean isFinished() {
-        for (Game game : getGames()){
-            if (game.getWinner() == null){
-                return finished;
-            }
+        if (this.numOfGames == this.winners.size()){
+            this.finished = true;
         }
-        this.finished = true;
-        return true;
+        return finished;
     }
 
     public void setFinished(boolean finished) {
         this.finished = finished;
+    }
+
+    public void addGame(Game game) {
+        this.games.add(game);
+        game.setRound(this);
+    }
+    public void addWinner(Player winner){
+        winners.add(winner);
     }
 }

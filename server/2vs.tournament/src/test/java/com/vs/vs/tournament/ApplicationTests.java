@@ -49,22 +49,19 @@ class ApplicationTests {
 //		assertNotNull(game1.getPlayer2());
 //	}
 
-//	@Test
-//	public void canAddGamesToRound(){
-//		Round round1 = roundRepository.findById(1l).orElse(null);
-//		List<Game> games = gameRepository.findAll();
-//		assert round1 != null;
-//		round1.setGames(games);
-//		assertEquals(2, round1.getGames().size());
-//	}
-
 	@Test
-	public void roundIsComplete(){
-		Round round1 = roundRepository.findById(1l).orElse(null);
-		assert round1 != null;
-		assertTrue(round1.isFinished());
-
-
+	public void canAddGamesToRound(){
+		Round round1 = new Round("test", 2);
+		Game game1 = new Game();
+		Game game2 = new Game();
+		round1.addGame(game1);
+		round1.addGame(game2);
+		assertEquals(2, round1.getGames().size());
 	}
+
+
+
+
+
 
 }
