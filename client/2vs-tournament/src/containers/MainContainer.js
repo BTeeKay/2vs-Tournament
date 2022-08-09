@@ -9,7 +9,6 @@ import TournamentForm from '../components/tournaments/TournamentForm';
 import AddPlayerContainer from './AddPlayerContainer';
 import PlayerContainer from './PlayerContainer';
 import AboutContainer from './AboutContainer';
-import Request from '../helpers/request';
 import { BrowserRouter as Router, Routes, Route, useParams } from 'react-router-dom';
 import Request from "../helpers/request"
 
@@ -62,7 +61,7 @@ const MainContainer = () => {
 
   const handleDelete = (id) => {
     const request = new Request();
-    const url = 'api/players/' + id;
+    const url = "http://localhost:8080/api/players/" + id;
     request.delete(url).then(() => {
       window.location = '/players';
     }); 
@@ -85,13 +84,13 @@ const MainContainer = () => {
 
             <Route path="/tournament" element={ 
             <TournamentForm players={players} onCreate={createTournament}/>} />
-
             <Route path="/tournament" element={ <TournamentContainer/> } />
 
-            <Route path="/players" element={ <PlayerContainer players={players} /> } />
-            <Route path="/about" element={ <AboutContainer/> } />
-            <Route path="/players/:id" element={ <PlayerDetailWrapper/> } />
             <Route path="players/new" element={<PlayerForm onCreate={createPlayer}/>} />
+            <Route path="/players/:id" element={ <PlayerDetailWrapper/> } />
+            <Route path="/players" element={ <PlayerContainer players={players} /> } />
+
+            <Route path="/about" element={ <AboutContainer/> } />
           </Routes>
       </Router>
         </>
