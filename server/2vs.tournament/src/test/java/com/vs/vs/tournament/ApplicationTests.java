@@ -66,4 +66,16 @@ class ApplicationTests {
 		assertEquals(2, tournament.getRounds().size());
 	}
 
+	@Test
+	public void canCreateTournamentAndGetRoundName() {
+		Tournament tournament = new Tournament("Test Tournament", 2);
+		List<Player> players = new ArrayList<>();
+		Player player1 = new Player("Brian");
+		Player player2 = new Player("Iain");
+		players.add(player1);
+		players.add(player2);
+		tournament.createTournament(tournament, players);
+		assertEquals("Final", tournament.getRounds().get(0).getName());
+	}
+
 }
