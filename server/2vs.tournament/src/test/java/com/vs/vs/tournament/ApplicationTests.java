@@ -3,6 +3,7 @@ package com.vs.vs.tournament;
 import com.vs.vs.tournament.models.Game;
 import com.vs.vs.tournament.models.Player;
 import com.vs.vs.tournament.models.Round;
+import com.vs.vs.tournament.models.Tournament;
 import com.vs.vs.tournament.repository.GameRepository;
 import com.vs.vs.tournament.repository.PlayerRespository;
 import com.vs.vs.tournament.repository.RoundRepository;
@@ -13,6 +14,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -29,11 +31,6 @@ class ApplicationTests {
 	@Autowired
 	RoundRepository roundRepository;
 
-
-
-
-
-
 	@Test
 	void contextLoads() {
 	}
@@ -49,22 +46,26 @@ class ApplicationTests {
 //		assertNotNull(game1.getPlayer2());
 //	}
 
-//	@Test
-//	public void canAddGamesToRound(){
-//		Round round1 = roundRepository.findById(1l).orElse(null);
-//		List<Game> games = gameRepository.findAll();
-//		assert round1 != null;
-//		round1.setGames(games);
-//		assertEquals(2, round1.getGames().size());
-//	}
+	@Test
+	public void canAddGamesToRound(){
+		Round round1 = new Round("test", 2);
+		Game game1 = new Game();
+		Game game2 = new Game();
+		round1.addGame(game1);
+		round1.addGame(game2);
+		assertEquals(2, round1.getGames().size());
+	}
 
 	@Test
-	public void roundIsComplete(){
-		Round round1 = roundRepository.findById(1l).orElse(null);
-		assert round1 != null;
-		assertTrue(round1.isFinished());
-
-
+	public void canCreateRoundsFromTournament() {
+		Tournament tournament = new Tournament("Test Tournament", 2);
+		List<Player> players = new ArrayList<>();
+		Player player1 = new Player("Brian");
+		Player player2 = new Player("Iain");
+		players.add(player1);
+		players.add(player2);
+		tournament.createTournament(tournament, players);
+		assertEquals(2, tournament.getRounds().size());
 	}
 
 }
