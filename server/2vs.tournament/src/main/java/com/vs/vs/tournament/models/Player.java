@@ -1,5 +1,7 @@
 package com.vs.vs.tournament.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 
 @Entity
@@ -13,7 +15,10 @@ public class Player {
 
     @Column(name="name")
     private String name;
+
+
     @OneToOne
+    @JsonIgnoreProperties({"player1", "player2", "round"})
     @JoinColumn(name = "game_id", nullable = true)
     private Game game;
 
