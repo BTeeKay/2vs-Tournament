@@ -5,18 +5,26 @@ import PlayerDetail from '../components/players/PlayerDetail';
 import PlayerForm from '../components/players/PlayerForm';
 import HomePageContainer from './HomePageContainer';
 import TournamentContainer from './TournamentContainer';
+import TournamentForm from '../components/tournaments/TournamentForm';
 import AddPlayerContainer from './AddPlayerContainer';
 import PlayerContainer from './PlayerContainer';
 import AboutContainer from './AboutContainer';
 import Request from '../helpers/request';
 import { BrowserRouter as Router, Routes, Route, useParams } from 'react-router-dom';
+import Request from "../helpers/request"
 
 const MainContainer = () => {
 
   const [players, setPlayers] = useState([])
+  const [tournaments , setTournament] = useState([])
 
   useEffect(() => {
     getPlayers()
+  },[])
+
+  useEffect ( () => {
+    getTournaments()
+    
   },[])
 
   const getPlayers = () => {
@@ -24,6 +32,20 @@ const MainContainer = () => {
     .then(res => res.json())
     .then(playersData => setPlayers(playersData))
   }
+
+  const getTournaments = () => {
+    fetch("http://localhost:8080/api/tournament")
+    .then(res => res.json())
+    .then(tournamentData => setTournament(tournamentData))
+  }
+
+  const createTournament = (tournament) => {
+    const request = new Request();
+    request.post('/api/tournament', tournament)
+    .then(() =>  window.location = "/tournament")
+  }
+
+
 
   const findPlayerById = (id) => {
     return players.find((player) => {
@@ -56,10 +78,16 @@ const MainContainer = () => {
     return (
       <>
       <Router>
-        {/* <LaunchScreen path="/" element={ <LaunchScreen/> } /> */}
           <Routes>
             <Route path="/" element={ <HomePageContainer />} />
+
+            {/* <Route path="/tournament" element={ <TournamentContainer tournaments ={tournaments}/>} /> */}
+
+            <Route path="/tournament" element={ 
+            <TournamentForm players={players} onCreate={createTournament}/>} />
+
             <Route path="/tournament" element={ <TournamentContainer/> } />
+
             <Route path="/players" element={ <PlayerContainer players={players} /> } />
             <Route path="/about" element={ <AboutContainer/> } />
             <Route path="/players/:id" element={ <PlayerDetailWrapper/> } />
