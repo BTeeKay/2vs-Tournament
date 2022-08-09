@@ -8,7 +8,7 @@ function App() {
 
     <div className="App">
       <header className="App-header">
-        <LaunchScreen path="/lauch" element={ <LaunchScreen/> } />
+        {/* <LaunchScreen path="/lauch" element={ <LaunchScreen/> } /> */}
         <MainContainer />
       </header>
     </div>

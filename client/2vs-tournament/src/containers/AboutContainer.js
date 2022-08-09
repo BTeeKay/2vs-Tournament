@@ -4,6 +4,7 @@ const AboutContainer = () => {
 
     return (
         <>
+        <p>this is about container</p>
         </>
     )
 
