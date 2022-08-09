@@ -20,13 +20,15 @@ public class Tournament {
     @JoinColumn(name = "round_2_id")
     private Round round2;
 
-    private ArrayList<Round> rounds;
+    @OneToMany
+    private List<Round> rounds;
 
     private int noOfRounds;
 
-    public Tournament(String name, int num) {
+    public Tournament(String name, int noOfRounds) {
         this.name = name;
-        this.noOfRounds = num;
+        this.noOfRounds = noOfRounds;
+        this.rounds = new ArrayList<>();
     }
     public Tournament(){}
     public Long getId() {
@@ -60,7 +62,7 @@ public class Tournament {
         this.round1 = round1;
     }
 
-    public ArrayList<Round> getRounds() {
+    public List<Round> getRounds() {
         return rounds;
     }
 
@@ -81,7 +83,7 @@ public class Tournament {
         ArrayList<Round> rounds = new ArrayList<>();
 
         for (int i = 0; i < counter; i++) {
-            Round round = new Round();
+            Round round = new Round("", i + 1);
             rounds.add(round);
         }
 
@@ -92,21 +94,33 @@ public class Tournament {
             t.getRounds().get(1).setName("Semi-Final");
             t.getRounds().get(2).setName("Quarter-Final");
             t.getRounds().get(3).setName("First Round");
+            t.setNoOfRounds(4);
         }
 
         if (t.getRounds().size() == 3) {
             t.getRounds().get(0).setName("Final");
             t.getRounds().get(1).setName("Semi-Final");
             t.getRounds().get(2).setName("Quarter-Final");
+            t.setNoOfRounds(3);
         }
 
         if (t.getRounds().size() == 2) {
             t.getRounds().get(0).setName("Final");
             t.getRounds().get(1).setName("Semi-Final");
+            t.setNoOfRounds(2);
+            Game g1 = new Game("bear");
+            Game g2 = new Game("river");
+            Game g3 = new Game("fish");
+            t.getRounds().get(0).addGame(g1);
+            t.getRounds().get(1).addGame(g2);
+            t.getRounds().get(1).addGame(g3);
         }
 
         if (t.getRounds().size() == 1) {
+            t.setNoOfRounds(1);
             t.getRounds().get(0).setName("Final");
+            Game g1 = new Game("cat");
+            t.getRounds().get(0).addGame(g1);
         }
 
     }

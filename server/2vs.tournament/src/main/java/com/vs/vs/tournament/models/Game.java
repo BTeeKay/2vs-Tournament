@@ -26,12 +26,9 @@ public class Game {
     @JoinColumn(name = "winner_id")
     private Player winner;
 
-
     @ManyToOne
     @JoinColumn(name="round_id", nullable = true)
     private Round round;
-
-
 
     public Game(String name) {
         this.name = name;
@@ -44,8 +41,6 @@ public class Game {
     public Game() {
 
     }
-
-
 
     public Round getRound() {
         return round;
@@ -107,4 +102,6 @@ public class Game {
             this.round.addWinner(winner);
         }
     }
+
+
 }
