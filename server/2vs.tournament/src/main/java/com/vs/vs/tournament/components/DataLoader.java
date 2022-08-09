@@ -5,7 +5,7 @@ import com.vs.vs.tournament.models.Player;
 import com.vs.vs.tournament.models.Round;
 import com.vs.vs.tournament.models.Tournament;
 import com.vs.vs.tournament.repository.GameRepository;
-import com.vs.vs.tournament.repository.PlayerRespository;
+import com.vs.vs.tournament.repository.PlayerRepository;
 import com.vs.vs.tournament.repository.RoundRepository;
 import com.vs.vs.tournament.repository.TournamentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,14 +13,13 @@ import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Component
 public class DataLoader implements ApplicationRunner {
 
     @Autowired
-    PlayerRespository playerRespository;
+    PlayerRepository playerRepository;
 
     @Autowired
     GameRepository gameRepository;
@@ -38,13 +37,14 @@ public class DataLoader implements ApplicationRunner {
     public void run(ApplicationArguments args) {
 
     Player player1 = new Player("Gary");
-    playerRespository.save(player1);
+    playerRepository.save(player1);
     Player player2 = new Player("Mark");
-    playerRespository.save(player2);
+    playerRepository.save(player2);
     Player player3 = new Player("Hary");
-    playerRespository.save(player3);
+    playerRepository.save(player3);
     Player player4 = new Player("Lary");
-    playerRespository.save(player4);
+    playerRepository.save(player4);
+
 
 
     Game game1 = new Game("Game 1");
@@ -82,30 +82,30 @@ public class DataLoader implements ApplicationRunner {
     game1.setPlayer1(player1);
     game1.setPlayer2(player2);
     gameRepository.save(game1);
-    playerRespository.save(player1);
-    playerRespository.save(player2);
+    playerRepository.save(player1);
+    playerRepository.save(player2);
 
     game2.setPlayer1(player3);
     game2.setPlayer2(player4);
     gameRepository.save(game2);
-    playerRespository.save(player3);
-    playerRespository.save(player4);
+    playerRepository.save(player3);
+    playerRepository.save(player4);
 
-    game1.setWinner(player1);
-    gameRepository.save(game1);
-    game2.setWinner(player3);
-    gameRepository.save(game2);
+//    game1.setWinner(player1);
+//    gameRepository.save(game1);
+//    game2.setWinner(player3);
+//    gameRepository.save(game2);
 
     round1.isFinished();
     roundRepository.save(round1);
 
     List<Player> winners = round1.getWinners();
 
-    game3.setPlayer1(winners.get(0));
-    game3.setPlayer2(winners.get(1));
-    playerRespository.save(winners.get(0));
-    playerRespository.save(winners.get(1));
-    gameRepository.save(game3);
+//    game3.setPlayer1(winners.get(0));
+//    game3.setPlayer2(winners.get(1));
+//    playerRepository.save(winners.get(0));
+//    playerRepository.save(winners.get(1));
+//    gameRepository.save(game3);
 
 
 

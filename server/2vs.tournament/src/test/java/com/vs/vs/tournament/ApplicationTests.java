@@ -5,18 +5,16 @@ import com.vs.vs.tournament.models.Player;
 import com.vs.vs.tournament.models.Round;
 import com.vs.vs.tournament.models.Tournament;
 import com.vs.vs.tournament.repository.GameRepository;
-import com.vs.vs.tournament.repository.PlayerRespository;
+import com.vs.vs.tournament.repository.PlayerRepository;
 import com.vs.vs.tournament.repository.RoundRepository;
 
 
-import org.junit.Before;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -24,7 +22,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class ApplicationTests {
 
 	@Autowired
-	PlayerRespository playerRespository;
+	PlayerRepository playerRepository;
 	@Autowired
 	GameRepository gameRepository;
 

@@ -18,7 +18,7 @@ public class Player {
 
 
     @OneToOne
-    @JsonIgnoreProperties({"player1", "player2", "round"})
+    @JsonIgnoreProperties({"player1", "player2", "round", "winner"})
     @JoinColumn(name = "game_id", nullable = true)
     private Game game;
 
