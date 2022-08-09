@@ -34,7 +34,7 @@ const MainContainer = () => {
   const createPlayer = (player) => {
     console.log("create player called", player);
     const request = new Request();
-    request.post("/api/players", player)
+    request.post("http://localhost:8080/api/players", player)
     .then(() => window.location = '/players')
   }
 
@@ -63,7 +63,7 @@ const MainContainer = () => {
             <Route path="/players" element={ <PlayerContainer players={players} /> } />
             <Route path="/about" element={ <AboutContainer/> } />
             <Route path="/players/:id" element={ <PlayerDetailWrapper/> } />
-            <Route path="/players/new" element={<PlayerForm onCreate={createPlayer}/>} />
+            <Route path="players/new" element={<PlayerForm onCreate={createPlayer}/>} />
           </Routes>
       </Router>
         </>

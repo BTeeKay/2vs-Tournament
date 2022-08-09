@@ -5,10 +5,7 @@ const PlayerForm = ({onCreate}) => {
 
     const [statePlayer, setStatePlayer] = useState(
     {
-        name: "",
-        game: {
-            "name": "",
-        }
+        name: ""
     }
 )
 
