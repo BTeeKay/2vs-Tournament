@@ -86,5 +86,28 @@ public class Tournament {
         }
 
         t.setRounds(rounds);
+
+        if (t.getRounds().size() == 4) {
+            t.getRounds().get(0).setName("Final");
+            t.getRounds().get(1).setName("Semi-Final");
+            t.getRounds().get(2).setName("Quarter-Final");
+            t.getRounds().get(3).setName("First Round");
+        }
+
+        if (t.getRounds().size() == 3) {
+            t.getRounds().get(0).setName("Final");
+            t.getRounds().get(1).setName("Semi-Final");
+            t.getRounds().get(2).setName("Quarter-Final");
+        }
+
+        if (t.getRounds().size() == 2) {
+            t.getRounds().get(0).setName("Final");
+            t.getRounds().get(1).setName("Semi-Final");
+        }
+
+        if (t.getRounds().size() == 1) {
+            t.getRounds().get(0).setName("Final");
+        }
+
     }
 }
