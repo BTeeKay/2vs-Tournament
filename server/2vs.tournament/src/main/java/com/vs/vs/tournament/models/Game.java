@@ -28,6 +28,7 @@ public class Game {
 
 
     @ManyToOne
+    @JsonIgnoreProperties({"games"})
     @JoinColumn(name="round_id", nullable = true)
     private Round round;
 
