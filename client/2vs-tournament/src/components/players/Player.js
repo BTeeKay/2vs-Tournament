@@ -17,7 +17,6 @@ const Player = ({player}) => {
             </p>
         </Fragment>
     )
-
 }
 
 export default Player;

@@ -2,12 +2,14 @@ import React, { useEffect, useState } from 'react';
 import './MainContainer.css';
 import LaunchScreen from '../components/LaunchScreen';
 import PlayerDetail from '../components/players/PlayerDetail';
+import PlayerForm from '../components/players/PlayerForm';
 import HomePageContainer from './HomePageContainer';
 import TournamentContainer from './TournamentContainer';
 import TournamentForm from '../components/tournaments/TournamentForm';
 import AddPlayerContainer from './AddPlayerContainer';
 import PlayerContainer from './PlayerContainer';
 import AboutContainer from './AboutContainer';
+import Request from '../helpers/request';
 import { BrowserRouter as Router, Routes, Route, useParams } from 'react-router-dom';
 import Request from "../helpers/request"
 
@@ -51,9 +53,16 @@ const MainContainer = () => {
     })
   }
 
+  const createPlayer = (player) => {
+    console.log("create player called", player);
+    const request = new Request();
+    request.post("http://localhost:8080/api/players", player)
+    .then(() => window.location = '/players')
+  }
+
   const handleDelete = (id) => {
     const request = new Request();
-    const url = 'api/players' + id;
+    const url = 'api/players/' + id;
     request.delete(url).then(() => {
       window.location = '/players';
     }); 
@@ -71,15 +80,18 @@ const MainContainer = () => {
       <Router>
           <Routes>
             <Route path="/" element={ <HomePageContainer />} />
+
             {/* <Route path="/tournament" element={ <TournamentContainer tournaments ={tournaments}/>} /> */}
 
             <Route path="/tournament" element={ 
             <TournamentForm players={players} onCreate={createTournament}/>} />
 
-            <Route path="/addplayer" element={ <AddPlayerContainer/> } />
+            <Route path="/tournament" element={ <TournamentContainer/> } />
+
             <Route path="/players" element={ <PlayerContainer players={players} /> } />
             <Route path="/about" element={ <AboutContainer/> } />
-            <Route path="/player/:id" element={ <PlayerDetailWrapper/> } />
+            <Route path="/players/:id" element={ <PlayerDetailWrapper/> } />
+            <Route path="players/new" element={<PlayerForm onCreate={createPlayer}/>} />
           </Routes>
       </Router>
         </>

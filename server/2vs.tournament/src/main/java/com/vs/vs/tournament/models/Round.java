@@ -1,8 +1,10 @@
 package com.vs.vs.tournament.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -16,14 +18,16 @@ public class Round {
     private String name;
     @Column(name = "numOfGames")
     private int numOfGames;
-    @OneToMany
-    @JoinColumn(name = "game_id")
+    @JsonIgnoreProperties({"round"})
+    @OneToMany(mappedBy = "round", fetch=FetchType.LAZY)
     private List<Game> games;
+
     @OneToMany
-    @JoinColumn(name = "player_id")
+    @JsonIgnoreProperties({"game"})
+    @JoinColumn(name = "winner_player_id", nullable = true)
     private List<Player> winners;
     @OneToMany
-    @JoinColumn(name = "player_id")
+    @JoinColumn(name = "loser_player_id", nullable = true)
     private List<Player> losers;
     @Column(name = "finished")
     private boolean finished;
@@ -31,14 +35,22 @@ public class Round {
     public Round(String name, int numOfGames) {
         this.name = name;
         this.numOfGames = numOfGames;
-        this.games = null;
-        this.winners = null;
-        this.losers = null;
+        this.games = new ArrayList<>();
+        this.winners = new ArrayList<>();
+        this.losers = new ArrayList<>();
         this.finished = false;
     }
 
     public Round() {
 
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -82,10 +94,21 @@ public class Round {
     }
 
     public boolean isFinished() {
+        if (this.numOfGames == this.winners.size()){
+            this.finished = true;
+        }
         return finished;
     }
 
     public void setFinished(boolean finished) {
         this.finished = finished;
+    }
+
+    public void addGame(Game game) {
+        this.games.add(game);
+        game.setRound(this);
+    }
+    public void addWinner(Player winner){
+        winners.add(winner);
     }
 }
