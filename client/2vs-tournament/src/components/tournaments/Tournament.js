@@ -8,7 +8,7 @@ const Tournament = ({ tournament }) => {
         return "Loading..."
     }
 
-    const url = "/tournament" + tournament.id;
+    const url = "/tournament/" + tournament.id;
     return (
         <Fragment>
             <p>
