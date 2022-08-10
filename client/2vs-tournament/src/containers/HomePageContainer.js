@@ -5,12 +5,12 @@ const HomePageContainer = () => {
 
     let navTournament = useNavigate();
     function handleTournamentClick() {
-        navTournament("./tournament");
+        navTournament("./tournament/new");
     }
 
     let navAddPlayer = useNavigate();
     function handleAddPlayerClick() {
-        navAddPlayer("./addplayer");
+        navAddPlayer("./players/new");
     }
 
     let navPlayerList = useNavigate();

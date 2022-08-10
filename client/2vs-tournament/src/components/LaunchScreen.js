@@ -18,7 +18,6 @@ const Title = () => {
                 .callFunction(() => {
                 })
                 .pauseFor(2500)
-                .deleteAll()
                 .callFunction(() => {
                 })
                 .start();
