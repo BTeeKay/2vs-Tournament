@@ -43,12 +43,19 @@ public class TournamentController {
         return new ResponseEntity<>(t, HttpStatus.CREATED);
     }
 
-    @PostMapping(value = "/tournament/{id}")
-    public ResponseEntity<Tournament> deletePirate(@PathVariable Long id, @RequestBody Round round) {
-        Tournament foundT = tournamentRepository.getOne(id);
-        Round foundR = roundRepository.getOne(round.getId());
-        List<Game> games = gameRepository.findGamesByRoundId(round.getId());
-
-        return new ResponseEntity<>(null, HttpStatus.OK);
+    @GetMapping(value = "/tournament/{id}")
+    public ResponseEntity getTournament(@PathVariable Long id){
+        return new ResponseEntity<>(tournamentRepository.findById(id), HttpStatus.OK);
     }
+
+    @GetMapping(value = "/tournament/{id}/next-round")
+    public ResponseEntity<Tournament> nextRound(@PathVariable Long id){
+        Tournament t = tournamentRepository.findById(id).orElse(null);
+        t.newRound();
+        tournamentRepository.save(t);
+        return new ResponseEntity<>(t, HttpStatus.OK);
+    }
+
+
+
 }

@@ -1,6 +1,7 @@
 package com.vs.vs.tournament.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 
@@ -15,10 +16,12 @@ public class Game {
     private String name;
     @OneToOne
     @JsonIgnoreProperties({"game"})
+
     @JoinColumn(name = "player1_id", nullable = true)
     private Player player1;
     @OneToOne
     @JsonIgnoreProperties({"game"})
+
     @JoinColumn(name = "player2_id", nullable = true)
     private Player player2;
     @OneToOne

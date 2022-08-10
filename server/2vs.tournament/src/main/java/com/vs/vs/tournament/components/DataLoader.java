@@ -56,8 +56,29 @@ public class DataLoader implements ApplicationRunner {
         tournament.createTournament(tournament,players);
         tournamentRepository.save(tournament);
 
+//        Game game1 = gameRepository.findById(1l).orElse(null);
+//        if (game1.getWinner() == null){
+//            Player player = game1.getPlayer1();
+//            game1.setWinner(player);
+//            gameRepository.save(game1);}
+//        Game game2 = gameRepository.findById(2l).orElse(null);
+//        if (game2.getWinner() == null){
+//            Player player = game2.getPlayer1();
+//            game2.setWinner(player);
+//            gameRepository.save(game2);}
 
-//    Game game1 = new Game("Game 1");
+//        Game game1 = gameRepository.findById(1l).orElse(null);
+//        Game game2 = gameRepository.findById(2l).orElse(null);
+//        game1.setWinner(player1);
+//        gameRepository.save(game1);
+//        tournamentRepository.save(tournament);
+//        game2.setWinner(player3);
+//        tournamentRepository.save(tournament);
+//        gameRepository.save(game2);
+
+
+
+//
 //    gameRepository.save(game1);
 //    Game game2 = new Game("Game 2");
 //    gameRepository.save(game2);
