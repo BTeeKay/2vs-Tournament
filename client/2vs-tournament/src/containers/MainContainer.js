@@ -68,7 +68,7 @@ const MainContainer = () => {
 
   const handleDelete = (id) => {
     const request = new Request();
-    const url = 'api/players/' + id;
+    const url = "http://localhost:8080/api/players/" + id;
     request.delete(url).then(() => {
       window.location = '/players';
     });
@@ -114,11 +114,13 @@ const MainContainer = () => {
 
 {/*  ___________________________________________ABOUT______________________________________________________*/}
 
+
           <Route path="/about" element={<AboutContainer />} />
 {/*  ___________________________________________ABOUT______________________________________________________*/}
 
 
-        </Routes>
+           
+          </Routes>
       </Router>
     </>
   )
