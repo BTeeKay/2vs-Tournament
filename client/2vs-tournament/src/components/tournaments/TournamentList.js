@@ -18,9 +18,10 @@ const TournamentList = ({tournaments}) => {
 
     return(
         <>
-        <ul className="player-list" >
+        <ul className="tournament-list" >
             <p>**Tournament List from api**</p>
             {tournamentList}
+
         </ul>
         </>
     )

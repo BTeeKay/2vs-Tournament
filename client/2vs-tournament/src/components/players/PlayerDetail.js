@@ -12,7 +12,7 @@ const PlayerDetail = ({player, handleDelete}) => {
         <div className ="component">
             <Player player={player} />
             <p>{player.name}</p>
-            <button onClick={onDelete}>Delete {player.name}</button>
+            <button className='delete-btn' onClick={onDelete}>Delete {player.name}</button>
         </div>
         </>
     )
