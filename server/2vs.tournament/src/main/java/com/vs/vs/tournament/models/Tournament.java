@@ -1,6 +1,8 @@
 package com.vs.vs.tournament.models;
 
 
+import org.hibernate.annotations.Cascade;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -23,6 +25,7 @@ public class Tournament {
     private Round round2;
 
     @OneToMany
+    @Cascade(org.hibernate.annotations.CascadeType.ALL)
     private List<Round> rounds;
 
     private int noOfRounds;
