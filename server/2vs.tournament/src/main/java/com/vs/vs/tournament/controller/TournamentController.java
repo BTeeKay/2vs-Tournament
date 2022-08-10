@@ -1,7 +1,7 @@
 package com.vs.vs.tournament.controller;
 
-import com.vs.vs.tournament.models.Player;
 import com.vs.vs.tournament.models.Tournament;
+
 import com.vs.vs.tournament.models.TournamentData;
 import com.vs.vs.tournament.repository.PlayerRespository;
 import com.vs.vs.tournament.repository.TournamentRepository;

@@ -5,18 +5,16 @@ import com.vs.vs.tournament.models.Player;
 import com.vs.vs.tournament.models.Round;
 import com.vs.vs.tournament.models.Tournament;
 import com.vs.vs.tournament.repository.GameRepository;
-import com.vs.vs.tournament.repository.PlayerRespository;
+import com.vs.vs.tournament.repository.PlayerRepository;
 import com.vs.vs.tournament.repository.RoundRepository;
 
 
-import org.junit.Before;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -24,7 +22,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class ApplicationTests {
 
 	@Autowired
-	PlayerRespository playerRespository;
+	PlayerRepository playerRepository;
 	@Autowired
 	GameRepository gameRepository;
 
@@ -49,8 +47,8 @@ class ApplicationTests {
 	@Test
 	public void canAddGamesToRound(){
 		Round round1 = new Round("test", 2);
-		Game game1 = new Game();
-		Game game2 = new Game();
+		Game game1 = new Game("game1");
+		Game game2 = new Game("game2");
 		round1.addGame(game1);
 		round1.addGame(game2);
 		assertEquals(2, round1.getGames().size());
@@ -79,6 +77,7 @@ class ApplicationTests {
 		tournament.createTournament(tournament, players);
 		assertEquals("Final", tournament.getRounds().get(0).getName());
 	}
+
 
 	@Test
 	public void roundCanAddGame() {
@@ -128,6 +127,19 @@ class ApplicationTests {
 		players.add(player2);
 		tournament.createTournament(tournament, players);
 		assertEquals("Brian", tournament.getRounds().get(0).getGames().get(0).getPlayer1().getName());
+	}
+
+
+
+	@Test
+	public void ratingChangeAfterWin(){
+		Player player1 = new Player("Brian");
+		Player player2 = new Player("Iain");
+		Game game1 = new Game("test");
+		game1.setPlayer1(player1);
+		game1.setPlayer2(player2);
+		game1.setWinner(player1);
+		assertEquals(1216, player1.getRating());
 	}
 
 }
