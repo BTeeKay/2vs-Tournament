@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import Select from 'react-select';
 
 const TournamentForm = ({ players, onCreate }) => {
 
@@ -29,7 +28,7 @@ const TournamentForm = ({ players, onCreate }) => {
         onCreate(stateTournament)
     }
 
-    const playerOptions = players.map((player, index)=>{
+    const playerOptions = players.map((player, index) => {
         return <option key={index} value={index} >{player.name}</option>
     })
 
@@ -38,9 +37,9 @@ const TournamentForm = ({ players, onCreate }) => {
     return (
         <>
             <form onSubmit={handleSubmit}>
-                <input type="text" placeholder='Tournament Name' name="name" onChange={handleChange} value ={stateTournament.name}></input>
-                <select name="player" onChange={handlePlayer} defaultValue="select-player">
-                    <option disabled value= "select-player">Select player to enter tournaments</option>
+                <input type="text" placeholder='Tournament Name' name="name" onChange={handleChange} value={stateTournament.name}></input>
+                <select multiple={true} name="player" onChange={handlePlayer} defaultValue="select-player">
+                    <option disabled value="select-player">Select player to enter tournaments</option>
                     {playerOptions}
                 </select>
                 <button type='submit'>Generate Tournament</button>

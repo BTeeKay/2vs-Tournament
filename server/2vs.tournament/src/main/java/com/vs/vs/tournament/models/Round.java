@@ -1,10 +1,12 @@
 package com.vs.vs.tournament.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import org.springframework.stereotype.Component;
+import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 @Entity
@@ -18,8 +20,10 @@ public class Round {
     private String name;
     @Column(name = "numOfGames")
     private int numOfGames;
-    @JsonIgnoreProperties({"round"})
-    @OneToMany(mappedBy = "round", fetch=FetchType.LAZY)
+
+    @JsonBackReference
+    @OneToMany(mappedBy = "round", fetch = FetchType.LAZY)
+    @Cascade(org.hibernate.annotations.CascadeType.ALL)
     private List<Game> games;
 
     @OneToMany
@@ -43,6 +47,11 @@ public class Round {
 
     public Round() {
 
+    }
+
+    public void addGame(Game game) {
+        this.games.add(game);
+        game.setRound(this);
     }
 
     public Long getId() {
@@ -104,11 +113,23 @@ public class Round {
         this.finished = finished;
     }
 
-    public void addGame(Game game) {
-        this.games.add(game);
-        game.setRound(this);
-    }
     public void addWinner(Player winner){
         winners.add(winner);
     }
+
+    public void populateRounds(Tournament t, List<Player> players) {
+
+        int numGames = t.getRounds().size() * 2;
+        Game g1 = new Game("cat");
+        Game g2 = new Game("dog");
+
+        Collections.shuffle(players);
+
+//        for (int i = 0; i < t.getRounds().size(); i++) {
+//            g1 = new Game("cat");
+//            g2 = new Game("dog");
+//            t.getRounds().get(0).addGame(g1);
+//            t.getRounds().get(0).addGame(g2);
+//        }
+   }
 }
