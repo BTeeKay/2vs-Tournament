@@ -47,8 +47,8 @@ class ApplicationTests {
 	@Test
 	public void canAddGamesToRound(){
 		Round round1 = new Round("test", 2);
-		Game game1 = new Game();
-		Game game2 = new Game();
+		Game game1 = new Game("game1");
+		Game game2 = new Game("game2");
 		round1.addGame(game1);
 		round1.addGame(game2);
 		assertEquals(2, round1.getGames().size());
@@ -78,4 +78,16 @@ class ApplicationTests {
 		assertEquals("Final", tournament.getRounds().get(0).getName());
 	}
 
+
+
+	@Test
+	public void ratingChangeAfterWin(){
+		Player player1 = new Player("Brian");
+		Player player2 = new Player("Iain");
+		Game game1 = new Game("test");
+		game1.setPlayer1(player1);
+		game1.setPlayer2(player2);
+		game1.setWinner(player1);
+		assertEquals(1216, player1.getRating());
+	}
 }
