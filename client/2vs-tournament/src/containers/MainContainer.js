@@ -18,6 +18,7 @@ const MainContainer = () => {
 
   const [players, setPlayers] = useState([])
   const [tournaments, setTournament] = useState([])
+  // const [rounds,setRounds] = useState([])
 
   useEffect(() => {
     getPlayers()
@@ -27,6 +28,12 @@ const MainContainer = () => {
     getTournaments()
 
   }, [])
+
+  // useEffect(() => {
+  //   getRounds()
+
+  // }, [])
+
 
   const getPlayers = () => {
     fetch("http:///localhost:8080/api/players")
@@ -39,6 +46,12 @@ const MainContainer = () => {
       .then(res => res.json())
       .then(tournamentData => setTournament(tournamentData))
   }
+
+  // const getRounds = () => {
+  //   fetch("http://localhost:8080/api/rounds")
+  //     .then(res => res.json())
+  //     .then(roundsData => setRounds(roundsData[1]))
+  // }
 
   const createTournament = (tournament) => {
     const request = new Request();
@@ -89,6 +102,8 @@ const MainContainer = () => {
 
   return (
     <>
+
+
       <Router>
         <Routes>
 {/*  ___________________________________________HOME______________________________________________________ */}

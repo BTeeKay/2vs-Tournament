@@ -16,6 +16,8 @@ const Tournament = ({ tournament }) => {
                     {tournament.name}
                 </Link>
 
+                <p>{tournament.rounds[1].name}</p>
+
             </p>
         </Fragment>
     )

@@ -2,7 +2,7 @@ import React from 'react';
 import Tournament from './Tournament';
 import Player from '../players/Player';
 
-const TournamentDetail = ({ tournament, player }) => {
+const TournamentDetail = ({ tournament }) => {
 
 
     return (
@@ -10,7 +10,14 @@ const TournamentDetail = ({ tournament, player }) => {
         <>
             <div className="component">
                 <Tournament tournament={tournament} />
-               
+
+                {tournament.name}
+
+                {tournament.rounds[1].name}
+
+                {tournament.rounds[2].name}
+
+
 
             </div>
         </>
