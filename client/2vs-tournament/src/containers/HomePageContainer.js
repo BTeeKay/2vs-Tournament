@@ -5,7 +5,7 @@ const HomePageContainer = () => {
 
     let navTournament = useNavigate();
     function handleTournamentClick() {
-        navTournament("./tournament");
+        navTournament("./tournament/new");
     }
 
     let navAddPlayer = useNavigate();

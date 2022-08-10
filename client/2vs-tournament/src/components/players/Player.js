@@ -7,7 +7,7 @@ const Player = ({player}) => {
         return "Loading..."
     }
 
-    const url = "/players" + player.id;
+    const url = "/players/" + player.id;
     return (
         <Fragment>
             <p>
