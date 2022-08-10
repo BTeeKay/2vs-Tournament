@@ -1,9 +1,15 @@
 package com.vs.vs.tournament.controller;
 
+
+import com.vs.vs.tournament.models.*;
+import com.vs.vs.tournament.repository.GameRepository;
+
 import com.vs.vs.tournament.models.Tournament;
 
 import com.vs.vs.tournament.models.TournamentData;
+
 import com.vs.vs.tournament.repository.PlayerRespository;
+import com.vs.vs.tournament.repository.RoundRepository;
 import com.vs.vs.tournament.repository.TournamentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -18,6 +24,12 @@ public class TournamentController {
     @Autowired
     TournamentRepository tournamentRepository;
 
+    @Autowired
+    RoundRepository roundRepository;
+
+    @Autowired
+    GameRepository gameRepository;
+
     @GetMapping(value = "/tournament")
     public ResponseEntity<List<Tournament>> getAllPlayers() {
         return new ResponseEntity<>(tournamentRepository.findAll(), HttpStatus.OK);
@@ -29,5 +41,14 @@ public class TournamentController {
         t.createTournament(t, data.getPlayers());
         tournamentRepository.save(t);
         return new ResponseEntity<>(t, HttpStatus.CREATED);
+    }
+
+    @PostMapping(value = "/tournament/{id}")
+    public ResponseEntity<Tournament> deletePirate(@PathVariable Long id, @RequestBody Round round) {
+        Tournament foundT = tournamentRepository.getOne(id);
+        Round foundR = roundRepository.getOne(round.getId());
+        List<Game> games = gameRepository.findGamesByRoundId(round.getId());
+
+        return new ResponseEntity<>(null, HttpStatus.OK);
     }
 }
