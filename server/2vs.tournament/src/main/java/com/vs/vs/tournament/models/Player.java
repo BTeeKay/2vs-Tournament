@@ -22,12 +22,26 @@ public class Player {
     @JoinColumn(name = "game_id", nullable = true)
     private Game game;
 
+    @Column(name = "rating")
+    private int rating;
+
+
+
     public Player(String name) {
         this.name = name;
         this.game = null;
+        this.rating = 1200;
     }
 
     public Player(){}
+
+    public int getRating() {
+        return rating;
+    }
+
+    public void setRating(int rating) {
+        this.rating = rating;
+    }
 
     public Long getId() {
         return id;

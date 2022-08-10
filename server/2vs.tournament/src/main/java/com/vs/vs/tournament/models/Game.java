@@ -32,6 +32,13 @@ public class Game {
     @JoinColumn(name="round_id", nullable = true)
     private Round round;
 
+    @Column(name="player_1_prob")
+    private float player1Prob;
+
+    @Column(name="player_2_prob")
+    private float player2Prob;
+
+
 
 
     public Game(String name) {
@@ -40,6 +47,8 @@ public class Game {
         this.player2 = null;
         this.winner = null;
         this.round = null;
+        this.player1Prob = 0;
+        this.player2Prob = 0;
     }
 
     public Game() {
@@ -47,6 +56,29 @@ public class Game {
     }
 
 
+    public double getPlayer1Prob() {
+        return player1Prob;
+    }
+
+    public void setPlayer1Prob() {
+        if(player1 != null & player2 != null){
+            float d = player1.getRating()+player2.getRating();
+            float probability = player1.getRating()/d;
+            this.player1Prob = probability;
+        } else {this.player1Prob = 0;}
+    }
+
+    public double getPlayer2Prob() {
+        return player2Prob;
+    }
+
+    public void setPlayer2Prob() {
+        if(player1 != null & player2 != null){
+            float d = player1.getRating()+player2.getRating();
+            float probability = player2.getRating()/d;
+            this.player2Prob = probability;
+        } else {this.player2Prob = 0;}
+    }
 
     public Round getRound() {
         return round;
@@ -72,6 +104,8 @@ public class Game {
 
         this.player1 = player1;
         player1.setGame(this);
+        this.setPlayer1Prob();
+        this.setPlayer2Prob();
     }
 
     public Player getPlayer2() {
@@ -82,6 +116,8 @@ public class Game {
     public void setPlayer2(Player player2) {
         this.player2 = player2;
         player2.setGame(this);
+        this.setPlayer1Prob();
+        this.setPlayer2Prob();
     }
 
     public Long getId() {
@@ -106,6 +142,37 @@ public class Game {
         if (this.canPlayMatch()) {
             this.winner = winner;
             this.round.addWinner(winner);
+            changeRating(winner);
         }
     }
+
+
+    public void changeRating(Player winner){
+
+        if (winner.getName() == player1.getName()) {
+            double d1 = 1 - getPlayer1Prob();
+            double d2 = 32 * d1;
+            int newRating = (int) (winner.getRating() + d2);
+            winner.setRating(newRating);
+
+            double d3 = 0 - getPlayer2Prob();
+            double d4 = 32 * d3;
+            newRating = (int)(player2.getRating() + d4);
+            player2.setRating(newRating);
+        } else {
+            double d1 = 1 - getPlayer2Prob();
+            double d2 = 32 * d1;
+            int newRating = (int) (player2.getRating() + d2);
+            player2.setRating(newRating);
+
+            double d3 = 0 - getPlayer1Prob();
+            double d4 = 32 * d3;
+            newRating = (int)(player1.getRating() + d4);
+            player1.setRating(newRating);
+        }
+
+    };
+
+
+
 }
