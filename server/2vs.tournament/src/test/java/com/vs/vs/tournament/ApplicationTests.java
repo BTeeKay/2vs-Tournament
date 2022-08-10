@@ -56,19 +56,19 @@ class ApplicationTests {
 
 	@Test
 	public void canCreateRoundsFromTournament() {
-		Tournament tournament = new Tournament("Test Tournament", 2);
+		Tournament tournament = new Tournament("Test Tournament", 1);
 		List<Player> players = new ArrayList<>();
 		Player player1 = new Player("Brian");
 		Player player2 = new Player("Iain");
 		players.add(player1);
 		players.add(player2);
 		tournament.createTournament(tournament, players);
-		assertEquals(2, tournament.getRounds().size());
+		assertEquals(1, tournament.getRounds().size());
 	}
 
 	@Test
 	public void canCreateTournamentAndGetRoundName() {
-		Tournament tournament = new Tournament("Test Tournament", 2);
+		Tournament tournament = new Tournament("Test Tournament", 1);
 		List<Player> players = new ArrayList<>();
 		Player player1 = new Player("Brian");
 		Player player2 = new Player("Iain");
@@ -76,6 +76,57 @@ class ApplicationTests {
 		players.add(player2);
 		tournament.createTournament(tournament, players);
 		assertEquals("Final", tournament.getRounds().get(0).getName());
+	}
+
+
+	@Test
+	public void roundCanAddGame() {
+		Round round = new Round();
+		Game game = new Game("Horse");
+		List<Game> games = new ArrayList<>();
+		games.add(game);
+		round.setGames(games);
+		assertEquals("Horse", round.getGames().get(0).getName());
+	}
+
+	@Test
+	public void canCreateTournamentAndGetGamesFromFirstRound() {
+		Tournament tournament = new Tournament("Test Tournament", 1);
+		List<Player> players = new ArrayList<>();
+		Player player1 = new Player("Brian");
+		Player player2 = new Player("Iain");
+		players.add(player1);
+		players.add(player2);
+		tournament.createTournament(tournament, players);
+		assertNotNull(tournament.getRounds().get(0).getGames());
+	}
+
+	@Test
+	public void canCreateTournamentAndGetGamesFromSecondRound() {
+		Tournament t1 = new Tournament("Second Test Tournament", 2);
+		List<Player> players = new ArrayList<>();
+		Player p1 = new Player("Brian");
+		Player p2 = new Player("Iain");
+		Player p3 = new Player("Ken");
+		Player p4 = new Player("Ally");
+		players.add(p1);
+		players.add(p2);
+		players.add(p3);
+		players.add(p4);
+		t1.createTournament(t1, players);
+		assertEquals("river", t1.getRounds().get(1).getGames().get(0).getName());
+	}
+
+	@Test
+	public void canCreateTournamentAndGetPlayersFromFinal() {
+		Tournament tournament = new Tournament("Test Tournament", 1);
+		List<Player> players = new ArrayList<>();
+		Player player1 = new Player("Brian");
+		Player player2 = new Player("Iain");
+		players.add(player1);
+		players.add(player2);
+		tournament.createTournament(tournament, players);
+		assertEquals("Brian", tournament.getRounds().get(0).getGames().get(0).getPlayer1().getName());
 	}
 
 
@@ -90,4 +141,5 @@ class ApplicationTests {
 		game1.setWinner(player1);
 		assertEquals(1216, player1.getRating());
 	}
+
 }

@@ -68,9 +68,6 @@ public class DataLoader implements ApplicationRunner {
 
     Round round2 = new Round("Final", 1);
     roundRepository.save(round2);
-//    List<Game> games = new ArrayList<>();
-//    games.add(game1);
-//    games.add(game2);
     round1.addGame(game1);
     round1.addGame(game2);
     round2.addGame(game3);

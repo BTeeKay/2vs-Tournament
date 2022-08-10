@@ -26,20 +26,17 @@ public class Game {
     @JoinColumn(name = "winner_id")
     private Player winner;
 
-
     @ManyToOne
     @JsonIgnoreProperties({"games"})
     @JoinColumn(name="round_id", nullable = true)
     private Round round;
+
 
     @Column(name="player_1_prob")
     private float player1Prob;
 
     @Column(name="player_2_prob")
     private float player2Prob;
-
-
-
 
     public Game(String name) {
         this.name = name;
@@ -147,6 +144,7 @@ public class Game {
     }
 
 
+
     public void changeRating(Player winner){
 
         if (winner.getName() == player1.getName()) {
@@ -172,7 +170,5 @@ public class Game {
         }
 
     };
-
-
 
 }
