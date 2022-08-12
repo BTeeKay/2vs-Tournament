@@ -72,8 +72,6 @@ public class DataLoader implements ApplicationRunner {
     roundRepository.save(round2);
 
     Tournament tournament = new Tournament("dataloader tournament", 2);
-    tournament.setRound1(round1);
-    tournament.setRound2(round2);
     tournamentRepository.save(tournament);
 
     game1.setPlayer1(player1);
