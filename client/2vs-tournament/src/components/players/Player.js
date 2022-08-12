@@ -1,21 +1,17 @@
-import React, { Fragment } from 'react';
-import {Link} from 'react-router-dom';
+import React from 'react'
+import "./PlayerSelection.css"
 
-const Player = ({player}) => {
 
-    if (!player) {
-        return "Loading..."
-    }
+const Player = ({ players }) => {
 
-    const url = "/players/" + player.id;
+
     return (
-        <Fragment>
-            <p>
-                <Link to = {url} className="name">
-                    {player.name}
-                </Link>
-            </p>
-        </Fragment>
+        <>
+            <div className ="playerGrid"> {players.name} </div>
+        </>
+
+
+
     )
 }
 
