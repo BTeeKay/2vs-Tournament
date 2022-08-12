@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import "./PlayerSelection.css"
 import Player from './Player';
+
 const PlayerSelection = ({ players, onCreate }) => {
 
     const [statePlayer, setStatePlayer] = useState(
         {
-            name: " "
+            name: ""
         }
     )
 
@@ -14,9 +15,9 @@ const PlayerSelection = ({ players, onCreate }) => {
         return <Player players={player} key={index} />
     })
 
-    const handleChange = function(event){
+    const handleChange = function (event) {
         let propertyName = event.target.name;
-        let copiedPlayer = {...statePlayer}
+        let copiedPlayer = { ...statePlayer }
         copiedPlayer[propertyName] = event.target.value;
         setStatePlayer(copiedPlayer)
     }
@@ -34,8 +35,8 @@ const PlayerSelection = ({ players, onCreate }) => {
 
             <button className='btn'>Generate Tournament </button>
 
-            <form onSubmit= {handleSubmit}>
-                <input type="text" placeholder="Add New Player" onChange={handleChange} />
+            <form onSubmit={handleSubmit}>
+                <input type="text" placeholder="Add New Player" name="name" value={statePlayer.name} onChange={handleChange} />
                 <button type="add-new-player">Add New Player</button>
             </form>
 

@@ -4,6 +4,7 @@ import HomePageContainer from './HomePageContainer';
 import TournamentContainer from './TournamentContainer'
 import { BrowserRouter as Router, Routes, Route, useParams } from 'react-router-dom';
 import Header from '../components/Header/Header';
+import PlayerSelection from '../components/players/PlayerSelection';
 const MainContainer = () => {
 
   const [players, setPlayers] = useState([])
@@ -24,6 +25,20 @@ const MainContainer = () => {
     request.post("http://localhost:8080/api/players", player)
       .then(() => window.location = '/players')
   }
+
+  // const findPlayerById = (id) => {
+  //     return players.find((players) => {
+  //       return player.id === parseInt(id);
+  //     })
+  // }
+
+  // const PlayerDetailWrapper = () => {
+  //   const {id} = useParams();
+  //   let foundPlayer = findPlayerById(id)
+  //   return <PlayerSelection playerfound={playerfound} handleDelete={handleDelete} />;
+  // }
+
+
 
 
   return (

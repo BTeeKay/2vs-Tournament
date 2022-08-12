@@ -44,7 +44,7 @@ public class DataLoader implements ApplicationRunner {
     Player player3 = new Player("Hary");
     playerRepository.save(player3);
     Player player4 = new Player("Lary");
-    playerRespository.save(player4);
+    playerRepository.save(player4);
 
 
     Game game1 = new Game("Game 1");
@@ -77,14 +77,14 @@ public class DataLoader implements ApplicationRunner {
     game1.setPlayer1(player1);
     game1.setPlayer2(player2);
     gameRepository.save(game1);
-    playerRespository.save(player1);
-    playerRespository.save(player2);
+    playerRepository.save(player1);
+    playerRepository.save(player2);
 
     game2.setPlayer1(player3);
     game2.setPlayer2(player4);
     gameRepository.save(game2);
-    playerRespository.save(player3);
-    playerRespository.save(player4);
+    playerRepository.save(player3);
+    playerRepository.save(player4);
 
     game1.setWinner(player1);
     gameRepository.save(game1);
@@ -98,8 +98,8 @@ public class DataLoader implements ApplicationRunner {
 
     game3.setPlayer1(winners.get(0));
     game3.setPlayer2(winners.get(1));
-    playerRespository.save(winners.get(0));
-    playerRespository.save(winners.get(1));
+    playerRepository.save(winners.get(0));
+    playerRepository.save(winners.get(1));
     gameRepository.save(game3);
     playerRepository.save(player4);
 
@@ -109,7 +109,7 @@ public class DataLoader implements ApplicationRunner {
         players.add(player3);
         players.add(player4);
 
-        Tournament tournament = new Tournament("test", 2);
+//        Tournament tournament = new Tournament("test", 2);
         tournament.createTournament(tournament,players);
         tournamentRepository.save(tournament);
 
