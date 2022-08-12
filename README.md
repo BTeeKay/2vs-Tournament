@@ -24,7 +24,7 @@ npm start
 
 Server:
 
-
+For the server to run you have to open the project from server/2vs.tournament and run Application.java from src/main/java/com.vs.vs.tournament/Application.java
 
 
 ## Built with
