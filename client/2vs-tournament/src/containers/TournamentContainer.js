@@ -1,5 +1,5 @@
 import React from "react";
-import PlayerSelection from '../components/Players/PlayerSelection';
+import PlayerSelection from '../components/players/PlayerSelection';
 
 
 const TournamentContainer = ({players, onCreate}) => {
