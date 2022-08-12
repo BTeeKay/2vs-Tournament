@@ -1,6 +1,5 @@
 import './App.css';
 import MainContainer from './containers/MainContainer';
-import LaunchScreen from './components/LaunchScreen';
 
 function App() {
 

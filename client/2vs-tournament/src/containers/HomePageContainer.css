@@ -1,0 +1,15 @@
+.tourn-btn{
+
+    align-self: center;
+    background-color: #008CBA;
+    border: none;
+    color: white;
+    border-radius: 8px;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    transition-duration: 0.4s;
+  
+  }
