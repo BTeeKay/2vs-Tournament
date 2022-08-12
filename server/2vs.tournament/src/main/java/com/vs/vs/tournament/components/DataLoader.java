@@ -44,6 +44,63 @@ public class DataLoader implements ApplicationRunner {
     Player player3 = new Player("Hary");
     playerRepository.save(player3);
     Player player4 = new Player("Lary");
+    playerRespository.save(player4);
+
+
+    Game game1 = new Game("Game 1");
+    gameRepository.save(game1);
+    Game game2 = new Game("Game 2");
+    gameRepository.save(game2);
+    Game game3 = new Game("Game 3");
+    gameRepository.save(game3);
+
+
+
+    Round round1 = new Round("Semi-Final", 2);
+    roundRepository.save(round1);
+
+    Round round2 = new Round("Final", 1);
+    roundRepository.save(round2);
+    round1.addGame(game1);
+    round1.addGame(game2);
+    round2.addGame(game3);
+    gameRepository.save(game1);
+    gameRepository.save(game2);
+    gameRepository.save(game3);
+    roundRepository.save(round1);
+
+    roundRepository.save(round2);
+
+    Tournament tournament = new Tournament("dataloader tournament", 2);
+    tournamentRepository.save(tournament);
+
+    game1.setPlayer1(player1);
+    game1.setPlayer2(player2);
+    gameRepository.save(game1);
+    playerRespository.save(player1);
+    playerRespository.save(player2);
+
+    game2.setPlayer1(player3);
+    game2.setPlayer2(player4);
+    gameRepository.save(game2);
+    playerRespository.save(player3);
+    playerRespository.save(player4);
+
+    game1.setWinner(player1);
+    gameRepository.save(game1);
+    game2.setWinner(player3);
+    gameRepository.save(game2);
+
+    round1.isFinished();
+    roundRepository.save(round1);
+
+    List<Player> winners = round1.getWinners();
+
+    game3.setPlayer1(winners.get(0));
+    game3.setPlayer2(winners.get(1));
+    playerRespository.save(winners.get(0));
+    playerRespository.save(winners.get(1));
+    gameRepository.save(game3);
     playerRepository.save(player4);
 
         ArrayList<Player> players = new ArrayList<>();
@@ -128,6 +185,7 @@ public class DataLoader implements ApplicationRunner {
 //    gameRepository.save(game3);
 //    playerRepository.save(winners.get(0));
 //    playerRepository.save(winners.get(1));
+
 
 
 
