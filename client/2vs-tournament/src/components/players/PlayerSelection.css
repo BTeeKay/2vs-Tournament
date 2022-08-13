@@ -1,14 +1,16 @@
 .playerGrid {
-    display: grid;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     margin-top: 20px;
-    border: 1px solid black;
+    /* border: 1px solid black;
     border-radius: 3rem;
-    width: 150px;
-    height: 150px;
+    width: 120px;
+    height: 20px;
     margin: 5px;
     padding: 20px;
     box-shadow: 0 0 5px 2px rgba(0, 0, 0, .3);
-    background-color: #a8b7ab;
+    background-color: #a8b7ab; */
 
 
 }
@@ -17,6 +19,8 @@
 
     align-self: center;
     background-color: #008CBA;
+    margin-top: 20px;
+    margin-bottom: 20px;
     border: none;
     color: white;
     border-radius: 8px;

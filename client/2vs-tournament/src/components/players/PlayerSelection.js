@@ -6,7 +6,8 @@ const PlayerSelection = ({ players, onCreate }) => {
 
     const [statePlayer, setStatePlayer] = useState(
         {
-            name: ""
+            name: "",
+            rating: 1200
         }
     )
 
