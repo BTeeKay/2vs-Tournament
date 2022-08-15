@@ -47,7 +47,6 @@ const MainContainer = () => {
     });
   }
 
-
   const findPlayerById = (id) => {
     return players.find((player) => {
       return player.id === parseInt(id);
@@ -63,30 +62,21 @@ const MainContainer = () => {
   const addPlayer = (player) => {
     let selectedPlayersCopy = [...selectedPlayers];
     selectedPlayersCopy.push(player)
-    let filteredSelectedPlayers = selectedPlayersCopy.filter(player => player.selected == true);
+    let filteredSelectedPlayers = selectedPlayersCopy.filter(player => player.selected === true);
     setSelectedPlayers(filteredSelectedPlayers)
   }
 
-
-
-
-
-
-
-
   const populateTournament = () => {
 
-
-
-    if (selectedPlayers.length == 8) {
+    if (selectedPlayers.length === 8) {
       setQurterFinalists(selectedPlayers)
 
     }
-    if (selectedPlayers.length == 4) {
+    if (selectedPlayers.length === 4) {
       setSemiFinalists(selectedPlayers)
 
     }
-    if (selectedPlayers.length == 2) {
+    if (selectedPlayers.length === 2) {
       setFinalists(selectedPlayers)
 
     }
@@ -125,7 +115,20 @@ const MainContainer = () => {
 
   }
 
+  function saveTournament(winner) {
+    console.log("This is save tournament")
+    console.log(selectedPlayers)
+    console.log(quarterFinalists)
+    console.log(semiFinalists)
+    console.log(finalists)
+    let data = {
+      "name": "React Test",
+      "noOfRounds": 2
+    }
 
+    const request = new Request();
+    request.post("http://localhost:8080/api/tournaments", data)
+  } 
 
   return (
     <>
@@ -150,7 +153,9 @@ const MainContainer = () => {
               addPlayer={addPlayer}
               populateTournament={populateTournament} />} />
 
-          <Route path="/tournament/show" element={<ShowTournamentContainer selectedPlayers={selectedPlayers} finalists={finalists} semiFinalists={semiFinalists} quarterFinalists={quarterFinalists} getSemiFinalists={getSemiFinalists} getfinalists={getfinalists} />} />
+          <Route path="/tournament/show" element={<ShowTournamentContainer selectedPlayers={selectedPlayers} finalists={finalists} 
+          semiFinalists={semiFinalists} quarterFinalists={quarterFinalists} getSemiFinalists={getSemiFinalists} 
+          getfinalists={getfinalists} saveTournament={saveTournament}/>} />
 
           {/*  ___________________________________________TOURNAMENT_________________________________________________*/}
 
