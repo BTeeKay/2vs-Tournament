@@ -2,13 +2,13 @@ import React, { useState } from 'react';
 import "./PlayerSelection.css"
 import Player from './Player';
 import e from 'cors';
+import { Link } from 'react-router-dom';
 
-const PlayerSelection = ({ players, onCreate }) => {
+const PlayerSelection = ({ players, onCreate, addPlayer, populateTournament }) => {
 
     const [statePlayer, setStatePlayer] = useState(
         {
             name: "",
-            rating: 1200
         }
     )
 
@@ -16,8 +16,9 @@ const PlayerSelection = ({ players, onCreate }) => {
 
         return (<div className='player-btns'>
             <Player
-                players={player}
-                key={player.id} />
+                player={player}
+                key={player.id}
+                addPlayer={addPlayer} />
         </div>)
     })
 
@@ -33,13 +34,18 @@ const PlayerSelection = ({ players, onCreate }) => {
         onCreate(statePlayer)
     }
 
+    const handleClick = () => {
+        console.log("test")
+        populateTournament()
+    }
+
     return (
         <>
 
             <div> {allPlayers}</div>
 
 
-            <button className='btn'>Generate Tournament </button>
+            <Link to="/tournament/show"><button className='btn' onClick={handleClick} >Generate Tournament </button></Link>
 
             <form onSubmit={handleSubmit}>
                 <input type="text" placeholder="Add New Player" name="name" value={statePlayer.name} onChange={handleChange} />
