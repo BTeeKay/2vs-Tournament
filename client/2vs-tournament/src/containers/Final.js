@@ -1,10 +1,11 @@
 import React from "react";
 import Game from "../components/Game/Game";
 
-const Final = ({ finalists }) => {
+const Final = ({ finalists, saveTournament }) => {
 
     function handleFinalGame() {
         console.log("Picked a winner")
+        saveTournament();
     }
     return (
         <div id="round">

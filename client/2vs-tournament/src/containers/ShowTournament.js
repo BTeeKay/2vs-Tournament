@@ -8,7 +8,8 @@ import SemiFinal from "./SemiFinal";
 
 
 
-const ShowTournamentContainer = ({ finalists, semiFinalists, quarterFinalists, getSemiFinalists, getfinalists, selectedPlayers }) => {
+const ShowTournamentContainer = ({ finalists, semiFinalists, quarterFinalists,
+     getSemiFinalists, getfinalists, selectedPlayers, saveTournament }) => {
 
 
 
@@ -17,7 +18,7 @@ const ShowTournamentContainer = ({ finalists, semiFinalists, quarterFinalists, g
         <div id='tournament'>
             {selectedPlayers.length > 4 ? <QuarterFinal players={quarterFinalists} getSemiFinalists={getSemiFinalists} /> : null}
             {selectedPlayers.length > 2 ? <SemiFinal players={semiFinalists} getfinalist={getfinalists} /> : null}
-            {selectedPlayers.length > 1 ? <Final finalists={finalists} /> : null}
+            {selectedPlayers.length > 1 ? <Final finalists={finalists} saveTournament={saveTournament}/> : null}
 
         </div >
 
