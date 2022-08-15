@@ -18,13 +18,20 @@ const Game = ({ player1, player2, name, getWinners }) => {
         }
     }
 
+    let gameStyle = "game"
+    let buttonStyle = 'button'
+    if (complete) {
+        gameStyle = "game-complete"
+        buttonStyle = 'button-complete'
+    }
+
     return (
-        <div id='game'>
+        <div id={gameStyle}>
             <h2 className="game-title"> {name}</h2>
             <div id='game-details'>
-                <button id='button' onClick={winner1}>{player1["name"]} </button>
+                <button id={buttonStyle} onClick={winner1}>{player1["name"]} </button>
                 <h4>Vs.</h4>
-                <button id='button' onClick={winner2}>{player2["name"]}</button>
+                <button id={buttonStyle} onClick={winner2}>{player2["name"]}</button>
             </div>
         </div>
     )
