@@ -1,28 +1,34 @@
 import React from "react";
 import { useState } from "react";
 
-const Game = ({ player1, player2, name, getWinners }) => {
+const Game = ({ player1, player2, name, getWinners, handleFinalGame }) => {
 
     const [complete, setComplete] = useState(false)
 
     const winner1 = () => {
-        if (complete == false) {
+
+        if(name !== "Final") {
+            if (complete == false) {
             getWinners(player1)
             setComplete(true)
         }
+            return
+        }
+
+        handleFinalGame()
+        
     }
     const winner2 = () => {
-        if (complete == false) {
+        if(name !== "Final") {
+             if (complete == false) {
             getWinners(player2)
             setComplete(true)
         }
-    }
+            return
+        }
 
-    let gameStyle = "game"
-    let buttonStyle = 'button'
-    if (complete) {
-        gameStyle = "game-complete"
-        buttonStyle = 'button-complete'
+        handleFinalGame()
+
     }
 
     return (
