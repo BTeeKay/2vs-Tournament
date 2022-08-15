@@ -8,36 +8,32 @@ import SemiFinal from "./SemiFinal";
 
 
 
-const ShowTournamentContainer = (players, noOfPlayers) => {
+const ShowTournamentContainer = ({ players, noOfPlayers }) => {
 
     const [quarterFinalists, setQurterFinalists] = useState([{ name: "Player 1" }, { name: "Player2" }, { name: "Player 3" }, { name: "Player 4" }, { name: "Player 5" }, { name: "Player 6" }, { name: "Player 7" }, { name: "Player 8" }])
     const [finalists, setFinalists] = useState([{ name: "" }, { name: "" }])
     const [semiFinalists, setSemiFinalists] = useState([{ name: "" }, { name: "" }, { name: "" }, { name: "" }])
 
 
+    useEffect(() => {
+        populateTournament()
+    }, [players])
 
 
     const populateTournament = () => {
+        if (noOfPlayers == 8) {
+            setQurterFinalists(players)
 
-        console.log('test')
-        setSemiFinalists(players)
+        }
+        if (noOfPlayers == 4) {
+            setSemiFinalists(players)
 
+        }
+        if (noOfPlayers == 2) {
+            setFinalists(players)
+
+        }
     }
-    // if (noOfPlayers == 8) {
-    //     setQurterFinalists(players)
-    //     console.log('test1')
-    //     return
-    // }
-
-
-
-
-    // if (noOfPlayers == 2) {
-    //     setFinalists(players)
-    //     console.log('test3')
-    //     return
-    // }
-
 
     const getfinalists = (winner) => {
 
