@@ -9,8 +9,11 @@ const MainContainer = () => {
         navTournament('./tournament');
     }
 
+
+
     return (
         <>
+        <h1>homepage container</h1>
     
       <br/>
       <br/>
@@ -20,7 +23,7 @@ const MainContainer = () => {
       <br/>
         
         
-        <button className='tourn-btn'onClick={handleTournamentClick}>Create a Tournament</button>
+        <button className='tourn-btn'onClick={handleTournamentClick}>Start a Tournament</button>
         
         </>
     )
