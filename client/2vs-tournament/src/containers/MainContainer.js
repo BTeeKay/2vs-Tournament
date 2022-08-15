@@ -13,7 +13,7 @@ import ShowTournamentContainer from './ShowTournament';
 const MainContainer = () => {
 
   const [players, setPlayers] = useState([{ name: "Player 1" }, { name: "Player2" }, { name: "Player 3" }, { name: "Player 4" }, { name: "Player 5" }, { name: "Player 6" }, { name: "Player 7" }, { name: "Player 8" }])
-  const [noOfPlayers, setNoOfPlayers] = useState(2)
+
 
 
   useEffect(() => {
@@ -43,13 +43,13 @@ const MainContainer = () => {
 
 
   const findPlayerById = (id) => {
-      return players.find((player) => {
-        return player.id === parseInt(id);
-      })
+    return players.find((player) => {
+      return player.id === parseInt(id);
+    })
   }
 
   const PlayerDetailWrapper = () => {
-    const {id} = useParams();
+    const { id } = useParams();
     let foundPlayer = findPlayerById(id)
     return <PlayerDetail foundPlayer={foundPlayer} handleDelete={handleDelete} />;
   }
@@ -66,7 +66,7 @@ const MainContainer = () => {
 
 
           <Route path="/" element={
-          <HomePageContainer/>} />
+            <HomePageContainer />} />
 
 
           {/*  ___________________________________________HOME_______________________________________________________*/}
@@ -74,11 +74,11 @@ const MainContainer = () => {
           {/*  ___________________________________________TOURNAMENT_________________________________________________*/}
 
           <Route path='/tournament' element={
-          <TournamentContainer 
-          players={players} 
-          onCreate={createPlayer} />} />
-          
-          <Route path="/tournament/show" element={<ShowTournamentContainer players={players} noOfPlayers={noOfPlayers} />} />
+            <TournamentContainer
+              players={players}
+              onCreate={createPlayer} />} />
+
+          <Route path="/tournament/show" element={<ShowTournamentContainer players={players} />} />
 
           {/*  ___________________________________________TOURNAMENT_________________________________________________*/}
 
@@ -86,10 +86,10 @@ const MainContainer = () => {
           {/*  ___________________________________________PLAYER_________________________________________________*/}
 
           <Route path="/players/:id" element={
-          <PlayerDetailWrapper/> } />
-          
+            <PlayerDetailWrapper />} />
+
           {/*  ___________________________________________PLAYER_________________________________________________*/}
-          
+
 
         </Routes>
       </Router>

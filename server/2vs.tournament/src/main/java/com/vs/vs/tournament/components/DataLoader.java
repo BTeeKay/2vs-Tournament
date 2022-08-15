@@ -41,10 +41,19 @@ public class DataLoader implements ApplicationRunner {
     playerRepository.save(player1);
     Player player2 = new Player("Mark");
     playerRepository.save(player2);
-//    Player player3 = new Player("Hary");
-//    playerRepository.save(player3);
-//    Player player4 = new Player("Lary");
-//    playerRepository.save(player4);
+    Player player3 = new Player("Hary");
+    playerRepository.save(player3);
+    Player player4 = new Player("Lary");
+    playerRepository.save(player4);
+        Player player5 = new Player("Mary");
+        playerRepository.save(player5);
+        Player player6 = new Player("Bark");
+        playerRepository.save(player6);
+        Player player7 = new Player("Pary");
+        playerRepository.save(player7);
+        Player player8 = new Player("Kary");
+        playerRepository.save(player8);
+
 
 //
 //    Game game1 = new Game("Game 1");
