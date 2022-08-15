@@ -25,15 +25,27 @@ public class Player {
     @Column(name = "rating")
     private int rating;
 
+    @Column(name = "selected")
+    private boolean selected;
+
 
 
     public Player(String name) {
         this.name = name;
         this.game = null;
         this.rating = 1200;
+        this.selected = false;
     }
 
     public Player(){}
+
+    public boolean isSelected() {
+        return selected;
+    }
+
+    public void setSelected(boolean selected) {
+        this.selected = selected;
+    }
 
     public int getRating() {
         return rating;

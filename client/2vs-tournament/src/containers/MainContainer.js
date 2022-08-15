@@ -12,8 +12,14 @@ import ShowTournamentContainer from './ShowTournament';
 
 const MainContainer = () => {
 
-  const [players, setPlayers] = useState([{ name: "Player 1" }, { name: "Player2" }, { name: "Player 3" }, { name: "Player 4" }, { name: "Player 5" }, { name: "Player 6" }, { name: "Player 7" }, { name: "Player 8" }])
-  const [noOfPlayers, setNoOfPlayers] = useState(4)
+  const [players, setPlayers] = useState([])
+  const [selectedPlayers, setSelectedPlayers] = useState([])
+
+
+  const [quarterFinalists, setQurterFinalists] = useState([{ name: "Player 1" }, { name: "Player2" }, { name: "Player 3" }, { name: "Player 4" }, { name: "Player 5" }, { name: "Player 6" }, { name: "Player 7" }, { name: "Player 8" }])
+  const [finalists, setFinalists] = useState([{ name: "" }, { name: "" }])
+  const [semiFinalists, setSemiFinalists] = useState([{ name: "" }, { name: "" }, { name: "" }, { name: "" }])
+
 
 
   useEffect(() => {
@@ -43,17 +49,81 @@ const MainContainer = () => {
 
 
   const findPlayerById = (id) => {
-      return players.find((player) => {
-        return player.id === parseInt(id);
-      })
+    return players.find((player) => {
+      return player.id === parseInt(id);
+    })
   }
 
   const PlayerDetailWrapper = () => {
-    const {id} = useParams();
+    const { id } = useParams();
     let foundPlayer = findPlayerById(id)
     return <PlayerDetail player={foundPlayer} handleDelete={handleDelete} />;
   }
 
+  const addPlayer = (player) => {
+    let selectedPlayersCopy = [...selectedPlayers];
+    selectedPlayersCopy.push(player)
+    let filteredSelectedPlayers = selectedPlayersCopy.filter(player => player.selected == true);
+    setSelectedPlayers(filteredSelectedPlayers)
+  }
+
+
+
+
+
+
+
+
+  const populateTournament = () => {
+
+
+
+    if (selectedPlayers.length == 8) {
+      setQurterFinalists(selectedPlayers)
+
+    }
+    if (selectedPlayers.length == 4) {
+      setSemiFinalists(selectedPlayers)
+
+    }
+    if (selectedPlayers.length == 2) {
+      setFinalists(selectedPlayers)
+
+    }
+  }
+
+  const getfinalists = (winner) => {
+
+    const finalistsCopy = [...finalists]
+    for (let i = 0; i < finalistsCopy.length; i++) {
+      if (finalistsCopy[i].name === winner.name) {
+        return
+      }
+      if (finalistsCopy[i].name === "") {
+        finalistsCopy[i] = winner
+        setFinalists(finalistsCopy)
+        return
+      }
+    }
+    return
+  }
+
+  const getSemiFinalists = (winner) => {
+    const semiFinalistsCopy = [...semiFinalists]
+
+    for (let i = 0; i < semiFinalistsCopy.length; i++) {
+      if (semiFinalistsCopy[i].name === winner.name) {
+        return
+      }
+      if (semiFinalistsCopy[i].name === "") {
+        semiFinalistsCopy[i] = winner
+        setSemiFinalists(semiFinalistsCopy)
+        return
+      }
+    }
+    return
+
+  }
 
 
 
@@ -66,7 +136,7 @@ const MainContainer = () => {
 
 
           <Route path="/" element={
-          <HomePageContainer/>} />
+            <HomePageContainer />} />
 
 
           {/*  ___________________________________________HOME_______________________________________________________*/}
@@ -74,11 +144,13 @@ const MainContainer = () => {
           {/*  ___________________________________________TOURNAMENT_________________________________________________*/}
 
           <Route path='/tournament' element={
-          <TournamentContainer 
-          players={players} 
-          onCreate={createPlayer} />} />
-          
-          <Route path="/tournament/show" element={<ShowTournamentContainer players={players} noOfPlayers={noOfPlayers} />} />
+            <TournamentContainer
+              players={players}
+              onCreate={createPlayer}
+              addPlayer={addPlayer}
+              populateTournament={populateTournament} />} />
+
+          <Route path="/tournament/show" element={<ShowTournamentContainer selectedPlayers={selectedPlayers} finalists={finalists} semiFinalists={semiFinalists} quarterFinalists={quarterFinalists} getSemiFinalists={getSemiFinalists} getfinalists={getfinalists} />} />
 
           {/*  ___________________________________________TOURNAMENT_________________________________________________*/}
 
@@ -86,10 +158,10 @@ const MainContainer = () => {
           {/*  ___________________________________________PLAYER_________________________________________________*/}
 
           <Route path="/players/:id" element={
-          <PlayerDetailWrapper/> } />
-          
+            <PlayerDetailWrapper />} />
+
           {/*  ___________________________________________PLAYER_________________________________________________*/}
-          
+
 
         </Routes>
       </Router>
