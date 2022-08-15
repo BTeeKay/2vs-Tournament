@@ -1,6 +1,13 @@
 package com.vs.vs.tournament.controller;
 
 import com.vs.vs.tournament.models.Player;
+import com.vs.vs.tournament.models.Tournament;
+import com.vs.vs.tournament.models.TournamentData;
+import com.vs.vs.tournament.repository.PlayerRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 import com.vs.vs.tournament.repository.PlayerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -44,7 +51,6 @@ public class PlayerController {
         playerRepository.delete(found);
         return new ResponseEntity<>(null, HttpStatus.OK);
     }
-
 
 
 }

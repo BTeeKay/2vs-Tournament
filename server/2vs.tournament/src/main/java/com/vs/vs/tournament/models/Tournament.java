@@ -17,12 +17,6 @@ public class Tournament {
     private Long id;
 
     private String name;
-    @OneToOne
-    @JoinColumn(name = "round_1_id")
-    private Round round1;
-    @OneToOne
-    @JoinColumn(name = "round_2_id")
-    private Round round2;
 
     @OneToMany
     @Cascade(org.hibernate.annotations.CascadeType.ALL)
@@ -43,28 +37,12 @@ public class Tournament {
         this.id = id;
     }
 
-    public Round getRound2() {
-        return round2;
-    }
-
     public String getName() {
         return name;
     }
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public void setRound2(Round round2) {
-        this.round2 = round2;
-    }
-
-    public Round getRound1() {
-        return round1;
-    }
-
-    public void setRound1(Round round1) {
-        this.round1 = round1;
     }
 
     public List<Round> getRounds() {
@@ -98,6 +76,7 @@ public class Tournament {
 
         if (t.getRounds().size() == 4) {
             // Note to myself (Brian) you need to finish this bit
+            // unsure if coming back to use this code 12/8
             t.getRounds().get(0).setName("Final");
             t.getRounds().get(1).setName("Semi-Final");
             t.getRounds().get(2).setName("Quarter-Final");

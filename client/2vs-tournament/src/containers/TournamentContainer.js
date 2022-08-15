@@ -1,12 +1,12 @@
 import React from "react";
-import TournamentList from "../components/tournaments/TournamentList";
-import TournamentForm from "../components/tournaments/TournamentForm";
+import PlayerSelection from '../components/players/PlayerSelection';
 
-const TournamentContainer = ({tournaments}) => {
+
+const TournamentContainer = ({players, onCreate}) => {
 
     return (
         <>
-        <TournamentList tournaments ={tournaments} />
+        <PlayerSelection players = {players} onCreate={onCreate}/>
         </>
     )
 

@@ -2,13 +2,85 @@
   text-align: center;
 }
 
-/* .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+
+#wrapper {
+  margin-left: auto;
+  margin-right: auto;
+  width: 960px;
+}
+
+.App {
+  text-align: center;
+  background-color: #FFFCF2
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+#tournament {
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#semi-final {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  gap: 160px;
+}
+
+#game {
+  display: flex;
+  flex-direction: column;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-} */
+  align-items: center;
+  border-style: solid;
+  margin: 2.5em;
+  padding: 1.5em;
+  height: 6em;
+  box-shadow: 3px 3px #CCC5B9;
+  background-color: #252422;
+  border-radius: 30px;
+  color: #EB5E28;
+  border-color: #403D39;
+
+
+}
+
+#game-details {
+  display: flex;
+  flex-direction: row;
+}
+
+#round {
+
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#button {
+  background-color: #FFFCF2;
+  color: black;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 0.5em;
+
+  transition-duration: 0.4s;
+}
+
+#button:hover {
+
+  background-color: #FFFCF2;
+  color: #EB5E28;
+
+}
