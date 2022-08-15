@@ -8,7 +8,7 @@ import SemiFinal from "./SemiFinal";
 
 
 
-const ShowTournamentContainer = ({ players, noOfPlayers }) => {
+const ShowTournamentContainer = ({ players }) => {
 
     const [quarterFinalists, setQurterFinalists] = useState([{ name: "Player 1" }, { name: "Player2" }, { name: "Player 3" }, { name: "Player 4" }, { name: "Player 5" }, { name: "Player 6" }, { name: "Player 7" }, { name: "Player 8" }])
     const [finalists, setFinalists] = useState([{ name: "" }, { name: "" }])
@@ -19,7 +19,7 @@ const ShowTournamentContainer = ({ players, noOfPlayers }) => {
         populateTournament()
     }, [players])
 
-
+    const noOfPlayers = players.length
     const populateTournament = () => {
         if (noOfPlayers == 8) {
             setQurterFinalists(players)

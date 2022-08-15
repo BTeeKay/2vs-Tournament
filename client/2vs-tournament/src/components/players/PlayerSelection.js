@@ -15,9 +15,9 @@ const PlayerSelection = ({ players, onCreate }) => {
     const allPlayers = players.map((player, index) => {
 
         return (<div className='player-btns'>
-        <Player 
-        players={player} 
-        key={index} />
+            <Player
+                players={player}
+                key={player.id} />
         </div>)
     })
 
@@ -50,6 +50,6 @@ const PlayerSelection = ({ players, onCreate }) => {
 
         </>
     )
-    }
+}
 
 export default PlayerSelection;
