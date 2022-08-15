@@ -7,6 +7,7 @@ import Header from '../components/Header/Header';
 import PlayerDetail from '../components/players/PlayerDetail';
 import Request from "../helpers/request";
 import ShowTournamentContainer from './ShowTournament';
+import About from '../components/About/About';
 
 
 
@@ -63,34 +64,29 @@ const MainContainer = () => {
       <Router>
         <Routes>
           {/*  ___________________________________________HOME______________________________________________________ */}
-
-
           <Route path="/" element={
-          <HomePageContainer/>} />
-
-
-          {/*  ___________________________________________HOME_______________________________________________________*/}
+            <HomePageContainer/>} />
 
           {/*  ___________________________________________TOURNAMENT_________________________________________________*/}
 
           <Route path='/tournament' element={
-          <TournamentContainer 
-          players={players} 
-          onCreate={createPlayer} />} />
+            <TournamentContainer 
+              players={players} 
+              onCreate={createPlayer} />} />
           
           <Route path="/tournament/show" element={<ShowTournamentContainer players={players} noOfPlayers={noOfPlayers} />} />
-
-          {/*  ___________________________________________TOURNAMENT_________________________________________________*/}
-
 
           {/*  ___________________________________________PLAYER_________________________________________________*/}
 
           <Route path="/players/:id" element={
-          <PlayerDetailWrapper/> } />
+            <PlayerDetailWrapper/> } />
           
-          {/*  ___________________________________________PLAYER_________________________________________________*/}
-          
+          {/*  ___________________________________________ABOUT_________________________________________________*/}
 
+          <Route path="/about" element={
+            <About />} />
+          
+          
         </Routes>
       </Router>
     </>

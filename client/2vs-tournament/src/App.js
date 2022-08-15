@@ -1,5 +1,6 @@
 import './App.css';
 import MainContainer from './containers/MainContainer';
+import Header from './components/Header/Header';
 
 function App() {
 
@@ -7,9 +8,10 @@ function App() {
 
     <div className="App">
       <header className="App-header">
-        {/* <LaunchScreen path="/lauch" element={ <LaunchScreen/> } /> */}
-        <MainContainer />
+        <Header />
       </header>
+        <MainContainer />
+
     </div>
   );
 }

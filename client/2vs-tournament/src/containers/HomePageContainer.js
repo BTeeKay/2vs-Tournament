@@ -9,22 +9,22 @@ const MainContainer = () => {
         navTournament('./tournament');
     }
 
+    let navAbout = useNavigate();
+    function handleAboutClick() {
+        navAbout('./about');
+    }
+
 
 
     return (
         <>
-        <h1>homepage container</h1>
-    
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
+        <h1></h1>
         
-        
+        <div className='page-btns'>
         <button className='tourn-btn'onClick={handleTournamentClick}>Start a Tournament</button>
         
+        <button className='about-btn'onClick={handleAboutClick}>About App</button>
+        </div>
         </>
     )
 
