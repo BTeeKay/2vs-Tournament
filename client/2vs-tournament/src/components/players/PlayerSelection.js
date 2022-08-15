@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import "./PlayerSelection.css"
 import Player from './Player';
-import e from 'cors';
 
 const PlayerSelection = ({ players, onCreate }) => {
 
@@ -39,12 +38,20 @@ const PlayerSelection = ({ players, onCreate }) => {
             <div> {allPlayers}</div>
 
 
-            <button className='btn'>Generate Tournament </button>
+            <button className='gen-btn'>Generate Tournament </button>
 
             <form onSubmit={handleSubmit}>
-                <input type="text" placeholder="Add New Player" name="name" value={statePlayer.name} onChange={handleChange} />
-                <button type="add-new-player">Add New Player</button>
+                <input 
+                className="input-box" 
+                type="text" 
+                placeholder="Enter Player Name" 
+                name="name" 
+                value={statePlayer.name} 
+                onChange={handleChange} 
+                required minLength ="1" />
+                <button className='add-btn' type="add-new-player">Add</button>
             </form>
+
 
 
 

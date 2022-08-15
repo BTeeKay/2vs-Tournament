@@ -51,7 +51,7 @@ const MainContainer = () => {
   const PlayerDetailWrapper = () => {
     const {id} = useParams();
     let foundPlayer = findPlayerById(id)
-    return <PlayerDetail foundPlayer={foundPlayer} handleDelete={handleDelete} />;
+    return <PlayerDetail player={foundPlayer} handleDelete={handleDelete} />;
   }
 
 
