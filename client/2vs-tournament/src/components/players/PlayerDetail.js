@@ -3,27 +3,25 @@ import Player from "./Player";
 
 const PlayerDetail = ({ player, handleDelete }) => {
 
-    if (player) {
 
-        const playerRatings = player.ratings.map((rating, index) => {
-            return <li key={index}>{player.rating}</li>
-        })
-
+    if (!player) {
+        return "....loading details"
+    }
         const onDelete = () => {
             handleDelete(player.id)
         }
 
-        return (
-            <>
-                <div className="delete-comp">
-                    <Player player={player} />
-                    <p>{player.name} ({player.rating})</p>
-                    {/* add confirmation button to confirm delete */}
-                    <button className="delete-btn" onClick={onDelete}>DeletePlayer</button>
-                </div>
-            </>
-        )
-    }
+    return (
+        <>
+        <div className='delete-button' 
+        onClick={(player) => { if (window.confirm('Are you sure you wish to remove the player?')) handleDelete(player) } } >
+
+            <p>Name:{player.name} (Player rating: {player.rating})</p>
+            <button className="delete-btn" onClick={onDelete} >Delete Player</button>
+        </div>
+        </>
+    )
+   
 }
 
 export default PlayerDetail;
