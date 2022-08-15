@@ -4,7 +4,7 @@ import HomePageContainer from './HomePageContainer';
 import TournamentContainer from './TournamentContainer'
 import { BrowserRouter as Router, Routes, Route, useParams } from 'react-router-dom';
 import Header from '../components/Header/Header';
-import PlayerSelection from '../components/players/PlayerSelection';
+import PlayerDetail from '../components/players/PlayerDetail';
 import Request from "../helpers/request";
 import ShowTournamentContainer from './ShowTournament';
 
@@ -42,31 +42,17 @@ const MainContainer = () => {
   }
 
 
+  const findPlayerById = (id) => {
+      return players.find((player) => {
+        return player.id === parseInt(id);
+      })
+  }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-  // const findPlayerById = (id) => {
-  //     return players.find((player) => {
-  //       return player.id === parseInt(id);
-  //     })
-  // }
-
-  // const PlayerDetailWrapper = () => {
-  //   const {id} = useParams();
-  //   let foundPlayer = findPlayerById(id)
-  //   return <PlayerSelection foundPlayer={foundPlayer} handleDelete={handleDelete} />;
-  // }
+  const PlayerDetailWrapper = () => {
+    const {id} = useParams();
+    let foundPlayer = findPlayerById(id)
+    return <PlayerDetail foundPlayer={foundPlayer} handleDelete={handleDelete} />;
+  }
 
 
 
@@ -78,17 +64,33 @@ const MainContainer = () => {
         <Routes>
           {/*  ___________________________________________HOME______________________________________________________ */}
 
-          <Route path="/" element={<HomePageContainer />} />
+
+          <Route path="/" element={
+          <HomePageContainer/>} />
+
 
           {/*  ___________________________________________HOME_______________________________________________________*/}
 
           {/*  ___________________________________________TOURNAMENT_________________________________________________*/}
 
-          <Route path='/tournament' element={<TournamentContainer players={players} onCreate={createPlayer} />} />
+          <Route path='/tournament' element={
+          <TournamentContainer 
+          players={players} 
+          onCreate={createPlayer} />} />
+          
+          <Route path="/tournament/show" element={<ShowTournamentContainer players={players} noOfPlayers={noOfPlayers} />} />
 
           {/*  ___________________________________________TOURNAMENT_________________________________________________*/}
 
-          <Route path="/tournament/show" element={<ShowTournamentContainer players={players} noOfPlayers={noOfPlayers} />} />
+
+          {/*  ___________________________________________PLAYER_________________________________________________*/}
+
+          <Route path="/players/:id" element={
+          <PlayerDetailWrapper/> } />
+          
+          {/*  ___________________________________________PLAYER_________________________________________________*/}
+          
+
         </Routes>
       </Router>
     </>

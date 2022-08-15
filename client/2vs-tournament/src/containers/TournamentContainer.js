@@ -6,6 +6,7 @@ const TournamentContainer = ({players, onCreate}) => {
 
     return (
         <>
+        
         <PlayerSelection players = {players} onCreate={onCreate}/>
         </>
     )
