@@ -1,12 +1,23 @@
 import React from "react";
 
-const Game = ({ player1, player2, name, getWinners }) => {
+const Game = ({ player1, player2, name, getWinners, handleFinalGame }) => {
 
     const winner1 = () => {
-        getWinners(player1)
+        if(name !== "Final") {
+            getWinners(player1)
+            return
+        }
+
+        handleFinalGame()
+        
     }
     const winner2 = () => {
-        getWinners(player2)
+        if(name !== "Final") {
+            getWinners(player2)
+            return
+        }
+
+        handleFinalGame()
     }
 
     return (
