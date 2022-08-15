@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import "./PlayerSelection.css"
 import Player from './Player';
+import e from 'cors';
 
 const PlayerSelection = ({ players, onCreate }) => {
 
@@ -13,7 +14,11 @@ const PlayerSelection = ({ players, onCreate }) => {
 
     const allPlayers = players.map((player, index) => {
 
-        return <Player players={player} key={index} />
+        return (<div className='player-btns'>
+        <Player 
+        players={player} 
+        key={index} />
+        </div>)
     })
 
     const handleChange = function (event) {
@@ -45,6 +50,6 @@ const PlayerSelection = ({ players, onCreate }) => {
 
         </>
     )
-}
+    }
 
 export default PlayerSelection;
