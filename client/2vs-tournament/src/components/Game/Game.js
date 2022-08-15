@@ -1,12 +1,21 @@
 import React from "react";
+import { useState } from "react";
 
 const Game = ({ player1, player2, name, getWinners }) => {
 
+    const [complete, setComplete] = useState(false)
+
     const winner1 = () => {
-        getWinners(player1)
+        if (complete == false) {
+            getWinners(player1)
+            setComplete(true)
+        }
     }
     const winner2 = () => {
-        getWinners(player2)
+        if (complete == false) {
+            getWinners(player2)
+            setComplete(true)
+        }
     }
 
     return (
