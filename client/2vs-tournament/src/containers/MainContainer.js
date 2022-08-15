@@ -6,9 +6,15 @@ import { BrowserRouter as Router, Routes, Route, useParams } from 'react-router-
 import Header from '../components/Header/Header';
 import PlayerSelection from '../components/players/PlayerSelection';
 import Request from "../helpers/request";
+import ShowTournamentContainer from './ShowTournament';
+
+
+
 const MainContainer = () => {
 
-  const [players, setPlayers] = useState([])
+  const [players, setPlayers] = useState([{ name: "Player 1" }, { name: "Player2" }, { name: "Player 3" }, { name: "Player 4" }, { name: "Player 5" }, { name: "Player 6" }, { name: "Player 7" }, { name: "Player 8" }])
+  const [noOfPlayers, setNoOfPlayers] = useState(4)
+
 
   useEffect(() => {
     getPlayers()
@@ -35,6 +41,21 @@ const MainContainer = () => {
     });
   }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   // const findPlayerById = (id) => {
   //     return players.find((player) => {
   //       return player.id === parseInt(id);
@@ -57,7 +78,7 @@ const MainContainer = () => {
         <Routes>
           {/*  ___________________________________________HOME______________________________________________________ */}
 
-          <Route path="/" element={<HomePageContainer/>} />
+          <Route path="/" element={<HomePageContainer />} />
 
           {/*  ___________________________________________HOME_______________________________________________________*/}
 
@@ -67,6 +88,7 @@ const MainContainer = () => {
 
           {/*  ___________________________________________TOURNAMENT_________________________________________________*/}
 
+          <Route path="/tournament/show" element={<ShowTournamentContainer players={players} noOfPlayers={noOfPlayers} />} />
         </Routes>
       </Router>
     </>
