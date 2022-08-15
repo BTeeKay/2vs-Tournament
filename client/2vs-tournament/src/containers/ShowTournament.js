@@ -71,9 +71,8 @@ const ShowTournamentContainer = ({ players, noOfPlayers }) => {
 
     return (
         <div id='tournament'>
-            <button onClick={populateTournament}>populateTournament</button>
-            <QuarterFinal players={quarterFinalists} getSemiFinalists={getSemiFinalists} />
-            <SemiFinal players={semiFinalists} getfinalist={getfinalists} />
+            {noOfPlayers > 4 ? <QuarterFinal players={quarterFinalists} getSemiFinalists={getSemiFinalists} /> : null}
+            {noOfPlayers > 2 ? <SemiFinal players={semiFinalists} getfinalist={getfinalists} /> : null}
             <Final finalists={finalists} />
         </div >
 
