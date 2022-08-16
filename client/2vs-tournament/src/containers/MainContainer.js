@@ -79,7 +79,7 @@ const MainContainer = () => {
       "noOfRounds": 2,
       "players": selectedPlayers
     }
-    
+
     const request = new Request();
     request.post("http://localhost:8080/api/tournaments", data)
 
@@ -144,7 +144,6 @@ const MainContainer = () => {
 
   const getSemiFinalists = (winner) => {
     const semiFinalistsCopy = [...semiFinalists]
-
     for (let i = 0; i < semiFinalistsCopy.length; i++) {
       if (semiFinalistsCopy[i].name === winner.name) {
         return
@@ -190,17 +189,19 @@ const MainContainer = () => {
     }
     const request = new Request();
     request.post("http://localhost:8080/api/tournaments", data)
-  } 
+  }
 
   return (
     <>
 
       <Router>
+      <Header />
+
         <Routes>
           {/*  ___________________________________________HOME______________________________________________________ */}
           <Route path="/" element={
 
-            <HomePageContainer/>} />
+            <HomePageContainer />} />
 
 
           {/*  ___________________________________________TOURNAMENT_________________________________________________*/}
@@ -214,23 +215,23 @@ const MainContainer = () => {
               populateTournament={populateTournament} />} />
 
 
-          <Route path="/tournament/show" element={<ShowTournamentContainer selectedPlayers={selectedPlayers} finalists={finalists} 
-          semiFinalists={semiFinalists} quarterFinalists={quarterFinalists} getSemiFinalists={getSemiFinalists} 
-          getfinalists={getfinalists} saveTournament={saveTournament} round16={round16} getQuarterFinalists={getQuarterFinalists}/>} />
+          <Route path="/tournament/show" element={<ShowTournamentContainer selectedPlayers={selectedPlayers} finalists={finalists}
+            semiFinalists={semiFinalists} quarterFinalists={quarterFinalists} getSemiFinalists={getSemiFinalists}
+            getfinalists={getfinalists} saveTournament={saveTournament} round16={round16} getQuarterFinalists={getQuarterFinalists} />} />
 
 
           {/*  ___________________________________________PLAYER_________________________________________________*/}
 
           <Route path="/players/:id" element={
 
-            <PlayerDetailWrapper/> } />
-          
+            <PlayerDetailWrapper />} />
+
           {/*  ___________________________________________ABOUT_________________________________________________*/}
 
 
           <Route path="/about" element={
             <About />} />
-         
+
         </Routes>
       </Router>
     </>

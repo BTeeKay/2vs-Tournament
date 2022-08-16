@@ -3,8 +3,10 @@
   background-color: #FFFCF2
 }
 
+
 body {
-  background-color: #FFFCF2
+  background-color: #FFFCF2;
+  margin-bottom: 50px;
 }
 
 #conatainer {
@@ -13,8 +15,8 @@ body {
   justify-content: center;
   margin-left: 30%;
   margin-right: 30%;
-
 }
+
 
 #wrapper {
   margin-left: auto;
@@ -201,6 +203,8 @@ body {
   }
 }
 
-#input-name-box {
+
+.input-box {
+
   height: 3em
 }
