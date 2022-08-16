@@ -44,7 +44,7 @@ const PlayerSelection = ({ players, onCreate, addPlayer, populateTournament }) =
         <>
             <div> {allPlayers}</div>
 
-            <Link to="/tournament/show"><button className='gem-btn' onClick={handleClick} >Generate Tournament </button></Link>
+            <Link to="/tournament/show"><button id='button-general' onClick={handleClick} >Generate Tournament </button></Link>
 
 
             <form onSubmit={handleSubmit}>
@@ -56,7 +56,7 @@ const PlayerSelection = ({ players, onCreate, addPlayer, populateTournament }) =
                     value={statePlayer.name}
                     onChange={handleChange}
                     required minLength="1" />
-                <button className='add-btn' type="add-new-player">Add</button>
+                <button id='button-general' className='add-btn' type="add-new-player">Add</button>
             </form>
 
         </>

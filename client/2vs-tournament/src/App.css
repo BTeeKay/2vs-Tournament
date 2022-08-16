@@ -94,6 +94,21 @@ body {
   transition-duration: 0.4s;
 }
 
+#button-general {
+  background-color: #403D39;
+  color: #EB5E28;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 0.5em;
+  transition-duration: 0.4s;
+}
+
 #button-complete {
   background-color: grey;
   color: black;
