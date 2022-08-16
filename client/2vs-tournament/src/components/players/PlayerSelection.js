@@ -42,7 +42,9 @@ const PlayerSelection = ({ players, onCreate, addPlayer, populateTournament }) =
 
     return (
         <>
-            <div> {allPlayers}</div>
+            <div id='conatainer'>
+                {allPlayers}
+            </div>
 
             <Link to="/tournament/show"><button id='button-general' onClick={handleClick} >Generate Tournament </button></Link>
 
