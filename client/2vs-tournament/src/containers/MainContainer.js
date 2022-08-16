@@ -74,6 +74,15 @@ const MainContainer = () => {
     const BYE = { name: "BYE" }
     const selectedPlayersRandom = selectedPlayers.sort(() => Math.random() - 0.5)
 
+    let data = {
+      "name": "React Test",
+      "noOfRounds": 2,
+      "players": selectedPlayers
+    }
+    
+    const request = new Request();
+    request.post("http://localhost:8080/api/tournaments", data)
+
     if (selectedPlayers.length == 2) {
 
       setFinalists(selectedPlayersRandom)
@@ -113,7 +122,6 @@ const MainContainer = () => {
       setRound16(selectedPlayersRandom)
       return
     }
-
 
     return
   }
@@ -180,8 +188,6 @@ const MainContainer = () => {
       "name": "React Test",
       "noOfRounds": 2
     }
-
-
     const request = new Request();
     request.post("http://localhost:8080/api/tournaments", data)
   } 

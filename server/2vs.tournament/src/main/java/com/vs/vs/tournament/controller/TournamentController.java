@@ -35,20 +35,15 @@ public class TournamentController {
         return new ResponseEntity<>(tournamentRepository.findAll(), HttpStatus.OK);
     }
 
-    @PostMapping(value = "/tournaments")
-    public ResponseEntity<Tournament> postCreateTournament(@RequestBody Tournament data){
-        Tournament t = new Tournament(data.getName(), data.getNoOfRounds());
-        tournamentRepository.save(t);
-        return new ResponseEntity<>(t, HttpStatus.CREATED);
-    }
 
-    @PostMapping(value = "/tournament")
-    public ResponseEntity<Tournament> postTournament(@RequestBody TournamentData data){
-        Tournament t = new Tournament(data.getName(), data.getNumOfRounds());
-        t.createTournament(t, data.getPlayers());
-        tournamentRepository.save(t);
-        return new ResponseEntity<>(t, HttpStatus.CREATED);
-    }
+//    @PostMapping(value = "/tournament")
+//    public ResponseEntity<Tournament> postTournament(@RequestBody TournamentData data){
+        // edited tournament class 16/08 which has stopped this
+//        Tournament t = new Tournament(data.getName(), data.getNumOfRounds());
+//        t.createTournament(t, data.getPlayers());
+//        tournamentRepository.save(t);
+//        return new ResponseEntity<>(t, HttpStatus.CREATED);
+//    }
 
     @PostMapping(value = "/tournament/{id}")
     public ResponseEntity<Tournament> deletePirate(@PathVariable Long id, @RequestBody Round round) {
