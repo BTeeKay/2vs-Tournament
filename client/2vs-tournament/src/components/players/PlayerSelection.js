@@ -44,21 +44,19 @@ const PlayerSelection = ({ players, onCreate, addPlayer, populateTournament }) =
         <>
             <div> {allPlayers}</div>
 
-            <button className='gen-btn'>Generate Tournament </button>
-
-            <Link to="/tournament/show"><button className='btn' onClick={handleClick} >Generate Tournament </button></Link>
+            <Link to="/tournament/show"><button id='button-general' onClick={handleClick} >Generate Tournament </button></Link>
 
 
             <form onSubmit={handleSubmit}>
-                <input 
-                className="input-box" 
-                type="text" 
-                placeholder="Enter Player Name" 
-                name="name" 
-                value={statePlayer.name} 
-                onChange={handleChange} 
-                required minLength ="1" />
-                <button className='add-btn' type="add-new-player">Add</button>
+                <input
+                    className="input-box"
+                    type="text"
+                    placeholder="Enter Player Name"
+                    name="name"
+                    value={statePlayer.name}
+                    onChange={handleChange}
+                    required minLength="1" />
+                <button id='button-general' className='add-btn' type="add-new-player">Add</button>
             </form>
 
         </>

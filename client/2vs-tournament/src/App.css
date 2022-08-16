@@ -1,12 +1,13 @@
+
 .App {
   text-align: center;
   background-color: #FFFCF2
 }
 
-body{
-  background-color: #CCC5B9;
-}
+body {
+  background-color: #FFFCF2
 
+}
 
 #wrapper {
   margin-left: auto;
@@ -92,7 +93,21 @@ body{
   margin: 4px 2px;
   cursor: pointer;
   border-radius: 0.5em;
+  transition-duration: 0.4s;
+}
 
+#button-general {
+  background-color: #403D39;
+  color: #EB5E28;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 0.5em;
   transition-duration: 0.4s;
 }
 
@@ -106,10 +121,7 @@ body{
   vertical-align: middle;
   font-size: 16px;
   margin: 4px 2px;
-
   border-radius: 0.5em;
-
-
 }
 
 #button:hover {
