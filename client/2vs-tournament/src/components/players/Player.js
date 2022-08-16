@@ -53,30 +53,18 @@ const Player = ({ player, addPlayer }) => {
 
     return (
         <>
-            <div>
-                <li>
-                    <label className='checkbox'>
-                        <input type="checkbox"
-                            // checked={checked}
-                            onChange={handleChange} />
-                        <button onClick={handlePlayerClick} >
-                            <div className='player-btns'
-                                value={player.name}>
-                                {player.name} </div>
-                        </button>
-                    </label>
-                    {/* <p>{checked ? "Selected" : "Not Selected"}</p> */}
-                </li>
-            </div>
 
-            {/* <Fragment>
-                <label className="player-selection" style={ {display: "block" }}>
-                    <input type="checkbox"/>
-                <Link to = {url} >
-                    {players.name} ({players.rating})
-                </Link>
-                </label>
-            </Fragment> */}
+            <article id='article'>
+                <input type="checkbox" id="article-input" onChange={handleChange} />
+                <div id='article-div'>
+                    {player.name}
+                </div>
+
+            </article>
+
+
+
+
         </>
 
 
@@ -85,3 +73,4 @@ const Player = ({ player, addPlayer }) => {
 }
 
 export default Player;
+
