@@ -1,4 +1,6 @@
 import React from "react";
+import './About.css'
+
 
 const About = () => {
   
@@ -17,27 +19,40 @@ const About = () => {
         </main>
 
         <section>
-            <h2>The team</h2>
+            <h2>The Team</h2>
+                <div className="socials">
+                    <div className="bio">
+                        <h3>Iain Hay</h3>
+                            <div className="social-icons">
+                                <a href="https://github.com/iain2" target="_blank"><img src="images/Github.png" alt="Github"></img></a>
+                                <a href="https://www.linkedin.com/in/iain-hay" target="_blank"><img src="images/LinkedIn.png" alt="Linkedin"></img></a>
+                            </div>
+                    </div>
+                    <div className="bio">
+                        <h3>Ken Cheng</h3>
+                            <div className="social-icons">
+                                <a href="https://github.com/Ckk169" target="_blank"><img src="images/Github.png" alt="Github"></img></a>
+                                <a href="https://www.linkedin.com/in/ken-cheng-184444100" target="_blank"><img src="images/LinkedIn.png" alt="Linkedin"></img></a>
+                            </div>
+                    </div>
+                    <div className="bio">
+                        <h3>Brian Kerr</h3>
+                            <div className="social-icons">
+                                <a href="https://github.com/SkyeEli" target="_blank"><img src="images/Github.png" alt="Github"></img></a>
+                                <a href="https://www.linkedin.com/in/btk91" target="_blank"><img src="images/LinkedIn.png" alt="Linkedin"></img></a>
+                            </div>
+                    </div>
+                    <div className="bio">
+                            <h3>Alisdair Sit</h3>
+                                <div className="social-icons">
+                                    <a href="https://github.com/Ally288" target="_blank"><img src="images/Github.png" alt="Github"></img></a>
+                                    <a href="https://www.linkedin.com/in/alisdairsit/" target="_blank"><img src="images/LinkedIn.png" alt="Linkedin"></img></a>
+                                </div>
+                    </div>
+                </div>
 
-            <div>
-            <h3>Iain Hay</h3>
-            </div>
-            
-            <div>
-            <h3>Ken Cheng</h3>
-            </div>
-            
-            <div>
-            <h3>Brian Kerr</h3>
-            </div>
-            
-            <div>
-            <h3>Alisdair Sit</h3>
-            </div>
-            
+                <br/>
         </section>
-
-
         </>
     )
 }

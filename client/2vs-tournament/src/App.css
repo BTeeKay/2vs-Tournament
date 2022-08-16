@@ -3,6 +3,7 @@
   background-color: #FFFCF2
 }
 
+
 body {
   background-color: #FFFCF2;
   margin-bottom: 50px;
@@ -14,9 +15,8 @@ body {
   justify-content: center;
   margin-left: 30%;
   margin-right: 30%;
-
-
 }
+
 
 #wrapper {
   margin-left: auto;
