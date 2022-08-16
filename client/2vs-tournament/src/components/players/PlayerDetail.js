@@ -14,9 +14,10 @@ const PlayerDetail = ({ player, handleDelete }) => {
     return (
         <>
         <div className='delete-button' 
-        onClick={(player) => { if (window.confirm('Are you sure you wish to remove the player?')) handleDelete(player) } } >
+        // onClick={(player) => { if (window.confirm('Are you sure you wish to remove the player?')) handleDelete(player) } } 
+        >
 
-            <p>Name:{player.name} (Player rating: {player.rating})</p>
+            <p>Name:{player.name}</p>
             <button className="delete-btn" onClick={onDelete} >Delete Player</button>
         </div>
         </>
