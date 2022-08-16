@@ -8,9 +8,6 @@ function App() {
 
     <div className="App">
 
-      <header className="App-header">
-        <Header />
-      </header>
         <MainContainer />
 
     </div>
