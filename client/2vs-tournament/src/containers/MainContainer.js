@@ -10,13 +10,14 @@ import ShowTournamentContainer from './ShowTournament';
 
 
 
+
 const MainContainer = () => {
 
   const [players, setPlayers] = useState([])
   const [selectedPlayers, setSelectedPlayers] = useState([])
 
-
-  const [quarterFinalists, setQurterFinalists] = useState([{ name: "Player 1" }, { name: "Player2" }, { name: "Player 3" }, { name: "Player 4" }, { name: "Player 5" }, { name: "Player 6" }, { name: "Player 7" }, { name: "Player 8" }])
+  const [round16, setRound16] = useState([{ name: "" }, { name: "" }, { name: "" }, { name: "" }, { name: "" }, { name: "" }, { name: "" }, { name: "" }, { name: "" }, { name: "" }, { name: "" }, { name: "" }, { name: "" }, { name: "" }, { name: "" }, { name: "" }])
+  const [quarterFinalists, setQurterFinalists] = useState([{ name: "" }, { name: "" }, { name: "" }, { name: "" }, { name: "" }, { name: "" }, { name: "" }, { name: "" }])
   const [finalists, setFinalists] = useState([{ name: "" }, { name: "" }])
   const [semiFinalists, setSemiFinalists] = useState([{ name: "" }, { name: "" }, { name: "" }, { name: "" }])
 
@@ -68,18 +69,52 @@ const MainContainer = () => {
 
   const populateTournament = () => {
 
-    if (selectedPlayers.length === 8) {
-      setQurterFinalists(selectedPlayers)
 
-    }
-    if (selectedPlayers.length === 4) {
-      setSemiFinalists(selectedPlayers)
+    const BYE = { name: "BYE" }
+    const selectedPlayersRandom = selectedPlayers.sort(() => Math.random() - 0.5)
 
-    }
-    if (selectedPlayers.length === 2) {
-      setFinalists(selectedPlayers)
+    if (selectedPlayers.length == 2) {
 
+      setFinalists(selectedPlayersRandom)
+      return
     }
+    if (selectedPlayers.length < 4) {
+      let c = 4 - selectedPlayers.length
+      for (let i = 0; i < c; i++) {
+        selectedPlayers.splice(i * 2, 0, BYE)
+      }
+    }
+    if (selectedPlayers.length == 4) {
+      setSemiFinalists(selectedPlayersRandom)
+      return
+    }
+    if (selectedPlayers.length < 8) {
+      let c = 8 - selectedPlayers.length
+      for (let i = 0; i < c; i++) {
+        selectedPlayers.splice(i * 2, 0, BYE)
+      }
+    }
+    if (selectedPlayers.length == 8) {
+
+      setQurterFinalists(selectedPlayersRandom)
+      return
+    }
+
+    if (selectedPlayers.length < 16) {
+      let c = 16 - selectedPlayers.length
+      for (let i = 0; i < c; i++) {
+        selectedPlayers.splice(i * 2, 0, BYE)
+      }
+    }
+    if (selectedPlayers.length == 16) {
+
+
+      setRound16(selectedPlayersRandom)
+      return
+    }
+
+
+    return
   }
 
   const getfinalists = (winner) => {
@@ -115,6 +150,25 @@ const MainContainer = () => {
 
   }
 
+
+  const getQuarterFinalists = (winner) => {
+    const quarterFinalistsCopy = [...quarterFinalists]
+
+    for (let i = 0; i < quarterFinalistsCopy.length; i++) {
+      if (quarterFinalistsCopy[i].name === winner.name) {
+        return
+      }
+      if (quarterFinalistsCopy[i].name === "") {
+        quarterFinalistsCopy[i] = winner
+        setQurterFinalists(quarterFinalistsCopy)
+        return
+      }
+    }
+    return
+
+  }
+
+
   function saveTournament(winner) {
     console.log("This is save tournament")
     console.log(selectedPlayers)
@@ -125,6 +179,7 @@ const MainContainer = () => {
       "name": "React Test",
       "noOfRounds": 2
     }
+
 
     const request = new Request();
     request.post("http://localhost:8080/api/tournaments", data)
@@ -153,9 +208,11 @@ const MainContainer = () => {
               addPlayer={addPlayer}
               populateTournament={populateTournament} />} />
 
+
           <Route path="/tournament/show" element={<ShowTournamentContainer selectedPlayers={selectedPlayers} finalists={finalists} 
           semiFinalists={semiFinalists} quarterFinalists={quarterFinalists} getSemiFinalists={getSemiFinalists} 
-          getfinalists={getfinalists} saveTournament={saveTournament}/>} />
+          getfinalists={getfinalists} saveTournament={saveTournament} round16={round16} getQuarterFinalists={getQuarterFinalists}/>} />
+
 
           {/*  ___________________________________________TOURNAMENT_________________________________________________*/}
 

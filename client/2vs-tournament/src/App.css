@@ -92,7 +92,6 @@
   margin: 4px 2px;
   cursor: pointer;
   border-radius: 0.5em;
-
   transition-duration: 0.4s;
 }
 
@@ -106,10 +105,7 @@
   vertical-align: middle;
   font-size: 16px;
   margin: 4px 2px;
-
   border-radius: 0.5em;
-
-
 }
 
 #button:hover {
