@@ -1,9 +1,20 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 
 const Game = ({ player1, player2, name, getWinners }) => {
 
     const [complete, setComplete] = useState(false)
+
+    // useEffect(() => {
+    //     checkBye()
+    // }, [])
+
+    const checkBye = () => {
+        if (player1.name == "BYE") {
+            winner2()
+        }
+    }
+
 
     const winner1 = () => {
         if (complete == false) {
