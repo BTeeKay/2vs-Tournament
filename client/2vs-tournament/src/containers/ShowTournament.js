@@ -9,7 +9,10 @@ import Round16 from "./Round16";
 
 
 
-const ShowTournamentContainer = ({ finalists, semiFinalists, quarterFinalists, round16, getQuarterFinalists, getSemiFinalists, getfinalists, selectedPlayers }) => {
+
+const ShowTournamentContainer = ({ finalists, semiFinalists, quarterFinalists,
+     getSemiFinalists, getfinalists, selectedPlayers, saveTournament, round16, getQuarterFinalists }) => {
+
 
 
 
@@ -19,7 +22,7 @@ const ShowTournamentContainer = ({ finalists, semiFinalists, quarterFinalists, r
             {selectedPlayers.length > 8 ? <Round16 players={round16} getQuarterFinalists={getQuarterFinalists} /> : null}
             {selectedPlayers.length > 4 ? <QuarterFinal players={quarterFinalists} getSemiFinalists={getSemiFinalists} /> : null}
             {selectedPlayers.length > 2 ? <SemiFinal players={semiFinalists} getfinalist={getfinalists} /> : null}
-            {selectedPlayers.length > 1 ? <Final finalists={finalists} /> : null}
+            {selectedPlayers.length > 1 ? <Final finalists={finalists} saveTournament={saveTournament}/> : null}
 
         </div >
 

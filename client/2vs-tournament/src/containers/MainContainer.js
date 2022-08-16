@@ -48,7 +48,6 @@ const MainContainer = () => {
     });
   }
 
-
   const findPlayerById = (id) => {
     return players.find((player) => {
       return player.id === parseInt(id);
@@ -58,17 +57,18 @@ const MainContainer = () => {
   const PlayerDetailWrapper = () => {
     const { id } = useParams();
     let foundPlayer = findPlayerById(id)
-    return <PlayerDetail foundPlayer={foundPlayer} handleDelete={handleDelete} />;
+    return <PlayerDetail player={foundPlayer} handleDelete={handleDelete} />;
   }
 
   const addPlayer = (player) => {
     let selectedPlayersCopy = [...selectedPlayers];
     selectedPlayersCopy.push(player)
-    let filteredSelectedPlayers = selectedPlayersCopy.filter(player => player.selected == true);
+    let filteredSelectedPlayers = selectedPlayersCopy.filter(player => player.selected === true);
     setSelectedPlayers(filteredSelectedPlayers)
   }
 
   const populateTournament = () => {
+
 
     const BYE = { name: "BYE" }
     const selectedPlayersRandom = selectedPlayers.sort(() => Math.random() - 0.5)
@@ -99,6 +99,7 @@ const MainContainer = () => {
       setQurterFinalists(selectedPlayersRandom)
       return
     }
+
     if (selectedPlayers.length < 16) {
       let c = 16 - selectedPlayers.length
       for (let i = 0; i < c; i++) {
@@ -106,6 +107,7 @@ const MainContainer = () => {
       }
     }
     if (selectedPlayers.length == 16) {
+
 
       setRound16(selectedPlayersRandom)
       return
@@ -148,6 +150,7 @@ const MainContainer = () => {
 
   }
 
+
   const getQuarterFinalists = (winner) => {
     const quarterFinalistsCopy = [...quarterFinalists]
 
@@ -166,6 +169,21 @@ const MainContainer = () => {
   }
 
 
+  function saveTournament(winner) {
+    console.log("This is save tournament")
+    console.log(selectedPlayers)
+    console.log(quarterFinalists)
+    console.log(semiFinalists)
+    console.log(finalists)
+    let data = {
+      "name": "React Test",
+      "noOfRounds": 2
+    }
+
+
+    const request = new Request();
+    request.post("http://localhost:8080/api/tournaments", data)
+  } 
 
   return (
     <>
@@ -190,7 +208,11 @@ const MainContainer = () => {
               addPlayer={addPlayer}
               populateTournament={populateTournament} />} />
 
-          <Route path="/tournament/show" element={<ShowTournamentContainer selectedPlayers={selectedPlayers} finalists={finalists} semiFinalists={semiFinalists} quarterFinalists={quarterFinalists} round16={round16} getQuarterFinalists={getQuarterFinalists} getSemiFinalists={getSemiFinalists} getfinalists={getfinalists} />} />
+
+          <Route path="/tournament/show" element={<ShowTournamentContainer selectedPlayers={selectedPlayers} finalists={finalists} 
+          semiFinalists={semiFinalists} quarterFinalists={quarterFinalists} getSemiFinalists={getSemiFinalists} 
+          getfinalists={getfinalists} saveTournament={saveTournament} round16={round16} getQuarterFinalists={getQuarterFinalists}/>} />
+
 
           {/*  ___________________________________________TOURNAMENT_________________________________________________*/}
 

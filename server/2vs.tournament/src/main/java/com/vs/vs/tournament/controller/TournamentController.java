@@ -35,6 +35,13 @@ public class TournamentController {
         return new ResponseEntity<>(tournamentRepository.findAll(), HttpStatus.OK);
     }
 
+    @PostMapping(value = "/tournaments")
+    public ResponseEntity<Tournament> postCreateTournament(@RequestBody Tournament data){
+        Tournament t = new Tournament(data.getName(), data.getNoOfRounds());
+        tournamentRepository.save(t);
+        return new ResponseEntity<>(t, HttpStatus.CREATED);
+    }
+
     @PostMapping(value = "/tournament")
     public ResponseEntity<Tournament> postTournament(@RequestBody TournamentData data){
         Tournament t = new Tournament(data.getName(), data.getNumOfRounds());
