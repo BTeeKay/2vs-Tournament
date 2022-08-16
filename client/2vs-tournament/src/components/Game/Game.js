@@ -10,6 +10,7 @@ const Game = ({ player1, player2, name, getWinners, handleFinalGame }) => {
     // }, [])
 
     const checkBye = () => {
+
         if (player1.name == "BYE") {
             winner2()
         }

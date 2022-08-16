@@ -42,7 +42,9 @@ const PlayerSelection = ({ players, onCreate, addPlayer, populateTournament }) =
 
     return (
         <>
+
             <h3>Select Players:</h3>
+
             <div id='conatainer'>
                 {allPlayers}
             </div>
