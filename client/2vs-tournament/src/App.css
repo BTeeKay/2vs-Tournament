@@ -160,7 +160,7 @@ body {
   border: 2px solid #403D39;
   box-sizing: border-box;
   background-color: #FFFCF2;
-  color: #EB5E28;
+  color: black;
 }
 
 #article-div {
@@ -189,13 +189,6 @@ body {
 }
 
 
-.blue-color {
-  color: #50bcf2;
-}
-
-.gray-color {
-  color: #555;
-}
 
 
 @keyframes slidein {
@@ -210,6 +203,8 @@ body {
   }
 }
 
+
 .input-box {
+
   height: 3em
 }
