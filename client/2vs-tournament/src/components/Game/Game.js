@@ -16,31 +16,43 @@ const Game = ({ player1, player2, name, getWinners, handleFinalGame }) => {
     }
 
 
+
     const winner1 = () => {
 
-        if(name !== "Final") {
+        if (name !== "Final") {
             if (complete == false) {
-            getWinners(player1)
-            setComplete(true)
-        }
+                getWinners(player1)
+                setComplete(true)
+            }
             return
         }
 
         handleFinalGame()
-        
+
     }
     const winner2 = () => {
-        if(name !== "Final") {
-             if (complete == false) {
-            getWinners(player2)
-            setComplete(true)
-        }
+        if (name !== "Final") {
+            if (complete == false) {
+                getWinners(player2)
+                setComplete(true)
+            }
             return
         }
 
         handleFinalGame()
 
     }
+
+    let gameStyle = "game"
+    let buttonStyle = 'button'
+    if (complete == true) {
+        gameStyle = "game-complete"
+        buttonStyle = "button-complete"
+    }
+
+
+
+
 
     return (
         <div id={gameStyle}>
