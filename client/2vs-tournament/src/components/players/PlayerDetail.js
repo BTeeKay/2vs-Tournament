@@ -1,15 +1,15 @@
 import React from "react";
 import Player from "./Player";
 
-const PlayerDetail = ({player, handleDelete}) => {
+const PlayerDetail = ({ player, handleDelete }) => {
+
 
     if (!player) {
         return "....loading details"
     }
-
         const onDelete = () => {
             handleDelete(player.id)
-            }
+        }
 
     return (
         <>
@@ -17,12 +17,11 @@ const PlayerDetail = ({player, handleDelete}) => {
         onClick={(player) => { if (window.confirm('Are you sure you wish to remove the player?')) handleDelete(player) } } >
 
             <p>Name:{player.name} (Player rating: {player.rating})</p>
-            {/* add confirmation button to confirm delete */}
             <button className="delete-btn" onClick={onDelete} >Delete Player</button>
         </div>
         </>
     )
-    
+   
 }
 
 export default PlayerDetail;

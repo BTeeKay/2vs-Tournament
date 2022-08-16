@@ -50,6 +50,24 @@ body{
 
 }
 
+#game-complete {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-style: solid;
+  margin: 2.5em;
+  padding: 1.5em;
+  height: 6em;
+  box-shadow: 3px 3px #CCC5B9;
+  background-color: #252422;
+  border-radius: 30px;
+  color: grey;
+  border-color: grey;
+
+
+}
+
 #game-details {
   display: flex;
   flex-direction: row;
@@ -76,6 +94,22 @@ body{
   border-radius: 0.5em;
 
   transition-duration: 0.4s;
+}
+
+#button-complete {
+  background-color: grey;
+  color: black;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 16px;
+  margin: 4px 2px;
+
+  border-radius: 0.5em;
+
+
 }
 
 #button:hover {
