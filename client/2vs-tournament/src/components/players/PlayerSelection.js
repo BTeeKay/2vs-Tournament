@@ -42,15 +42,13 @@ const PlayerSelection = ({ players, onCreate, addPlayer, populateTournament }) =
 
     return (
         <>
+            <h3>Select Players:</h3>
             <div id='conatainer'>
                 {allPlayers}
             </div>
-
-            <Link to="/tournament/show"><button id='button-general' onClick={handleClick} >Generate Tournament </button></Link>
-
-
             <form onSubmit={handleSubmit}>
                 <input
+                    id='input-name-box'
                     className="input-box"
                     type="text"
                     placeholder="Enter Player Name"
@@ -60,7 +58,7 @@ const PlayerSelection = ({ players, onCreate, addPlayer, populateTournament }) =
                     required minLength="1" />
                 <button id='button-general' className='add-btn' type="add-new-player">Add</button>
             </form>
-
+            <Link to="/tournament/show"><button id='button-general' onClick={handleClick} >Generate Tournament</button></Link>
         </>
     )
 }
