@@ -1,9 +1,9 @@
-body{
-  background-color: #CCC5B9;
+body {
+  background-color: #FFFCF2;
 }
 
-.header{
-  display:flex;
+.header {
+  display: flex;
   width: 100%;
   height: auto;
   margin: auto;
