@@ -9,12 +9,12 @@ const Game = ({ player1, player2, name, getWinners, handleFinalGame }) => {
     //     checkBye()
     // }, [])
 
-    const checkBye = () => {
+    // const checkBye = () => {
 
-        if (player1.name == "BYE") {
-            winner2()
-        }
-    }
+    //     if (player1.name == "BYE") {
+    //         winner2()
+    //     }
+    // }
 
 
 
@@ -22,6 +22,9 @@ const Game = ({ player1, player2, name, getWinners, handleFinalGame }) => {
 
         if (name !== "Final") {
             if (complete == false) {
+                if (player1.name === "BYE") {
+                    return
+                }
                 getWinners(player1)
                 setComplete(true)
             }
