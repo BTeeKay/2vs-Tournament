@@ -1,6 +1,6 @@
 import React from 'react';
 import './HomePageContainer.css';
-import {BrowserRouter as Router, Routes, Route, useNavigate} from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, useNavigate } from "react-router-dom";
 
 const MainContainer = () => {
 
@@ -18,13 +18,13 @@ const MainContainer = () => {
 
     return (
         <>
-        <h1></h1>
-        
-        <div className='page-btns'>
-        <button className='tourn-btn'onClick={handleTournamentClick}>Start a Tournament</button>
-        
-        <button className='about-btn'onClick={handleAboutClick}>About App</button>
-        </div>
+            <h1></h1>
+
+            <div className='page-btns'>
+                <button id='button-general' onClick={handleTournamentClick}>Start a Tournament</button>
+
+                <button id='button-general' onClick={handleAboutClick}>About App</button>
+            </div>
         </>
     )
 
