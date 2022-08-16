@@ -4,6 +4,20 @@
 }
 
 
+body {
+  background-color: #FFFCF2;
+  margin-bottom: 50px;
+}
+
+#conatainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-left: 30%;
+  margin-right: 30%;
+}
+
+
 #wrapper {
   margin-left: auto;
   margin-right: auto;
@@ -124,4 +138,73 @@
   background-color: #FFFCF2;
   color: #EB5E28;
 
+}
+
+#button-general:hover {
+
+  background-color: #FFFCF2;
+  color: #EB5E28;
+
+}
+
+
+
+
+
+#article {
+  position: relative;
+  width: 140px;
+  height: 100px;
+  margin: 5px;
+  float: left;
+  border: 2px solid #403D39;
+  box-sizing: border-box;
+  background-color: #FFFCF2;
+  color: black;
+}
+
+#article-div {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  line-height: 25px;
+  transition: .5s ease;
+}
+
+#article-input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 140px;
+  height: 100px;
+  opacity: 0;
+  cursor: pointer;
+}
+
+#article-input[type=checkbox]:checked~div {
+  background-color: #403D39;
+  color: #EB5E28;
+}
+
+
+
+
+@keyframes slidein {
+  from {
+    margin-top: 100%;
+    width: 300%;
+  }
+
+  to {
+    margin: 0%;
+    width: 100%;
+  }
+}
+
+
+.input-box {
+
+  height: 3em
 }

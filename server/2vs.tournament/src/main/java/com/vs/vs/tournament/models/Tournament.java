@@ -22,12 +22,15 @@ public class Tournament {
     @Cascade(org.hibernate.annotations.CascadeType.ALL)
     private List<Round> rounds;
 
+    @OneToMany
+    @Cascade(org.hibernate.annotations.CascadeType.ALL)
+    private List<Player> players;
     private int noOfRounds;
 
-    public Tournament(String name, int noOfRounds) {
+    public Tournament(String name, int noOfRounds, List<Player> players) {
         this.name = name;
         this.noOfRounds = noOfRounds;
-        this.rounds = new ArrayList<>();
+        this.players = players;
     }
     public Tournament(){}
     public Long getId() {
@@ -59,6 +62,18 @@ public class Tournament {
 
     public void setNoOfRounds(int noOfRounds) {
         this.noOfRounds = noOfRounds;
+    }
+
+    public void setRounds(List<Round> rounds) {
+        this.rounds = rounds;
+    }
+
+    public List<Player> getPlayers() {
+        return players;
+    }
+
+    public void setPlayers(List<Player> players) {
+        this.players = players;
     }
 
     public void createTournament(Tournament t, List<Player> players) {
