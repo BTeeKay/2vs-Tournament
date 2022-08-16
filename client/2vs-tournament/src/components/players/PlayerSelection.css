@@ -1,0 +1,46 @@
+.add-btn {
+
+    align-self: center;
+    background-color: #252422;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border: none;
+    color: #EB5E28;
+    border-radius: 9px;
+    padding: px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 18px;
+    transition-duration: 0.4s;
+}
+
+.add-btn:hover {
+    background-color: #FFFCF2;
+    color: #EB5E28;
+    border: black
+}
+
+.gen-btn {
+
+    align-self: center;
+    background-color: #252422;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border: none;
+    color: #EB5E28;
+    border-radius: 8px;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    transition-duration: 0.4s;
+}
+
+.gen-btn:hover {
+
+    background-color: #FFFCF2;
+    color: #EB5E28;
+    border: black
+}

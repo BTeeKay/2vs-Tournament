@@ -1,53 +1,33 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
+import React from 'react';
+import './HomePageContainer.css';
+import { BrowserRouter as Router, Routes, Route, useNavigate } from "react-router-dom";
 
-const HomePageContainer = () => {
+const MainContainer = () => {
 
     let navTournament = useNavigate();
     function handleTournamentClick() {
-        navTournament("./tournament");
+        navTournament('./tournament');
     }
 
-    let navAddPlayer = useNavigate();
-    function handleAddPlayerClick() {
-        navAddPlayer("./addplayer");
+    let navAbout = useNavigate();
+    function handleAboutClick() {
+        navAbout('./about');
     }
 
-    let navPlayerList = useNavigate();
-    function handleViewPlayersClick() {
-        navPlayerList("./players");
-    }
 
-    let navAboutApp = useNavigate();
-    function handleAboutAppClick() {
-        navAboutApp("./about");
-    }
 
     return (
         <>
-<p>this is home page container</p>
+            <h1></h1>
 
-        <div className="button-container">
-            <div className="tournament-button">
-                <button onClick={handleTournamentClick}>Start Tournament</button>
+            <div className='page-btns'>
+                <button id='button-general' onClick={handleTournamentClick}>Start a Tournament</button>
+
+                <button id='button-general' onClick={handleAboutClick}>About App</button>
             </div>
-
-            <div className="add-player-button">
-                <button onClick={handleAddPlayerClick}>Add Players</button>
-            </div>
-
-            <div className="players-button">
-                <button onClick={handleViewPlayersClick}>View Players</button>
-            </div>
-
-            <div className="about-button">
-                <button onClick={handleAboutAppClick}>About App</button>
-            </div>
-
-        </div>
         </>
     )
 
 }
 
-export default HomePageContainer;
+export default MainContainer;

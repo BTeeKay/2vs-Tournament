@@ -18,16 +18,42 @@ public class Player {
 
 
     @OneToOne
-    @JsonIgnoreProperties({"player1", "player2", "round"})
+    @JsonIgnoreProperties({"player1", "player2", "round", "winner"})
     @JoinColumn(name = "game_id", nullable = true)
     private Game game;
+
+    @Column(name = "rating")
+    private int rating;
+
+    @Column(name = "selected")
+    private boolean selected;
+
+
 
     public Player(String name) {
         this.name = name;
         this.game = null;
+        this.rating = 1200;
+        this.selected = false;
     }
 
     public Player(){}
+
+    public boolean isSelected() {
+        return selected;
+    }
+
+    public void setSelected(boolean selected) {
+        this.selected = selected;
+    }
+
+    public int getRating() {
+        return rating;
+    }
+
+    public void setRating(int rating) {
+        this.rating = rating;
+    }
 
     public Long getId() {
         return id;

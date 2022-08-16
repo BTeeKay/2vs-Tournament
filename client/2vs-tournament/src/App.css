@@ -1,14 +1,206 @@
 .App {
   text-align: center;
+  background-color: #FFFCF2
 }
 
-/* .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+body {
+  background-color: #FFFCF2
+}
+
+#conatainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-left: 30%;
+  margin-right: 30%;
+
+}
+
+#wrapper {
+  margin-left: auto;
+  margin-right: auto;
+  width: 960px;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+#tournament {
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#semi-final {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  gap: 160px;
+}
+
+#game {
+  display: flex;
+  flex-direction: column;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-} */
+  align-items: center;
+  border-style: solid;
+  margin: 2.5em;
+  padding: 1.5em;
+  height: 6em;
+  box-shadow: 3px 3px #CCC5B9;
+  background-color: #252422;
+  border-radius: 30px;
+  color: #EB5E28;
+  border-color: #403D39;
+
+
+}
+
+#game-complete {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-style: solid;
+  margin: 2.5em;
+  padding: 1.5em;
+  height: 6em;
+  box-shadow: 3px 3px #CCC5B9;
+  background-color: #252422;
+  border-radius: 30px;
+  color: grey;
+  border-color: grey;
+
+
+}
+
+#game-details {
+  display: flex;
+  flex-direction: row;
+}
+
+#round {
+
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#button {
+  background-color: #FFFCF2;
+  color: black;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 0.5em;
+  transition-duration: 0.4s;
+}
+
+#button-general {
+  background-color: #403D39;
+  color: #EB5E28;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 0.5em;
+  transition-duration: 0.4s;
+}
+
+#button-complete {
+  background-color: grey;
+  color: black;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 16px;
+  margin: 4px 2px;
+  border-radius: 0.5em;
+}
+
+#button:hover {
+
+  background-color: #FFFCF2;
+  color: #EB5E28;
+
+}
+
+#button-general:hover {
+
+  background-color: #FFFCF2;
+  color: #EB5E28;
+
+}
+
+
+
+
+
+#article {
+  position: relative;
+  width: 140px;
+  height: 100px;
+  margin: 5px;
+  float: left;
+  border: 2px solid #403D39;
+  box-sizing: border-box;
+  background-color: #FFFCF2;
+  color: black;
+}
+
+#article-div {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  line-height: 25px;
+  transition: .5s ease;
+}
+
+#article-input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 140px;
+  height: 100px;
+  opacity: 0;
+  cursor: pointer;
+}
+
+#article-input[type=checkbox]:checked~div {
+  background-color: #403D39;
+  color: #EB5E28;
+}
+
+
+
+
+@keyframes slidein {
+  from {
+    margin-top: 100%;
+    width: 300%;
+  }
+
+  to {
+    margin: 0%;
+    width: 100%;
+  }
+}
+
+#input-name-box {
+  height: 3em
+}

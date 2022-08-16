@@ -1,17 +1,23 @@
 import './App.css';
 import MainContainer from './containers/MainContainer';
-import LaunchScreen from './components/LaunchScreen';
+import Header from './components/Header/Header';
 
 function App() {
 
   return (
 
-    <div className="App">
-      <header className="App-header">
-        <LaunchScreen path="/lauch" element={ <LaunchScreen/> } />
+    <>
+
+      <div className="App">
+
+        <header className="App-header">
+          <Header />
+        </header>
         <MainContainer />
-      </header>
-    </div>
+
+      </div>
+
+    </>
   );
 }
 
