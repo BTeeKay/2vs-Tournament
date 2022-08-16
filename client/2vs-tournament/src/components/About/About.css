@@ -21,6 +21,9 @@
 
 .social-icons{
     display:flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
+}
 
+.icon{
+    padding-right: 10px;
 }
