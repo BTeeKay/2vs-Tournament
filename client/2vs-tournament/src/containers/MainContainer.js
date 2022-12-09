@@ -16,7 +16,6 @@ const MainContainer = () => {
 
   const [players, setPlayers] = useState([])
   const [selectedPlayers, setSelectedPlayers] = useState([])
-
   const [round16, setRound16] = useState([{ name: "" }, { name: "" }, { name: "" }, { name: "" }, { name: "" }, { name: "" }, { name: "" }, { name: "" }, { name: "" }, { name: "" }, { name: "" }, { name: "" }, { name: "" }, { name: "" }, { name: "" }, { name: "" }])
   const [quarterFinalists, setQurterFinalists] = useState([{ name: "" }, { name: "" }, { name: "" }, { name: "" }, { name: "" }, { name: "" }, { name: "" }, { name: "" }])
   const [finalists, setFinalists] = useState([{ name: "" }, { name: "" }])
@@ -39,6 +38,13 @@ const MainContainer = () => {
     const request = new Request();
     request.post("http://localhost:8080/api/players", player)
       .then(() => window.location = '/tournament')
+  }
+
+  const updatePlayer = (player) => {
+    console.log("update player called", player);
+    const request = new Request();
+    request.put("http://localhost:8080/api/players/{player.id}", player)
+
   }
 
   const handleDelete = (id) => {
@@ -195,7 +201,7 @@ const MainContainer = () => {
     <>
 
       <Router>
-      <Header />
+        <Header />
 
         <Routes>
           {/*  ___________________________________________HOME______________________________________________________ */}
@@ -217,7 +223,7 @@ const MainContainer = () => {
 
           <Route path="/tournament/show" element={<ShowTournamentContainer selectedPlayers={selectedPlayers} finalists={finalists}
             semiFinalists={semiFinalists} quarterFinalists={quarterFinalists} getSemiFinalists={getSemiFinalists}
-            getfinalists={getfinalists} saveTournament={saveTournament} round16={round16} getQuarterFinalists={getQuarterFinalists} />} />
+            getfinalists={getfinalists} saveTournament={saveTournament} round16={round16} getQuarterFinalists={getQuarterFinalists} updatePlayer={updatePlayer} />} />
 
 
           {/*  ___________________________________________PLAYER_________________________________________________*/}
