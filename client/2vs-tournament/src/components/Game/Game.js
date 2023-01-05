@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
 
-const Game = ({ player1, player2, name, getWinners, handleFinalGame, updatePlayer }) => {
+const Game = ({ player1, player2, name, getWinners, handleFinalGame, updatePlayer, gameNumber }) => {
 
     const [complete, setComplete] = useState(false)
 
@@ -26,7 +26,7 @@ const Game = ({ player1, player2, name, getWinners, handleFinalGame, updatePlaye
                 let playerList = changeRatings(player1, player2)
                 updatePlayer(playerList[0])
                 updatePlayer(playerList[1])
-                getWinners(playerList[0])
+                getWinners(playerList[0], gameNumber)
                 setComplete(true)
             }
             return
@@ -46,10 +46,10 @@ const Game = ({ player1, player2, name, getWinners, handleFinalGame, updatePlaye
                     let playerList = changeRatings(player2, player1)
                     updatePlayer(playerList[0])
                     updatePlayer(playerList[1])
-                    getWinners(playerList[0])
+                    getWinners(playerList[0], gameNumber)
                 }
                 else {
-                    getWinners(player2)
+                    getWinners(player2, gameNumber)
                 }
                 setComplete(true)
             }
